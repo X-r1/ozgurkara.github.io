@@ -1,0 +1,1004 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Özgür Kara — Mimarlık Portfolyosu</title>
+  <meta name="description" content="Özgür Kara — mimarlık öğrencisi. Projeler, 3D maketler, teknik çizimler ve özgeçmiş.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="loader" data-i18n="loading">Yükleniyor</div>
+  <canvas id="scene"></canvas>
+  <div id="tag"><span data-i18n="explore">İncele</span> ↗ <b></b></div>
+
+  <header class="nav">
+    <a href="#top" class="logo">Ö.K.</a>
+    <nav>
+      <a href="#projects" data-i18n="navProjects">Projeler</a>
+      <a href="#cv">CV</a>
+      <a href="#contact" data-i18n="contact">İletişim</a>
+      <button class="lang" id="lang" title="Dil / Language">EN</button>
+    </nav>
+  </header>
+  <div id="dots" class="hide"></div>
+
+  <main class="content">
+    <section class="hero" id="top">
+      <span class="eyebrow" data-i18n="eyebrow">Mimari Portfolyo — 2026</span>
+      <h1><span>Özgür</span><span>Kara</span></h1>
+      <p class="lead" data-i18n="lead">Mimarlık öğrencisi. Mimari tasarım, sürdürülebilir yapı ve 3D modelleme üzerine çalışıyorum. Aşağı kaydır, projelerimi keşfet.</p>
+      <div class="scroll-hint"><span data-i18n="scroll">Kaydır</span><i></i></div>
+    </section>
+
+    <div id="projects"></div>
+
+    <!-- ================= CV ================= -->
+    <section class="cv" id="cv">
+      <div class="cv-head">
+        <div>
+          <span class="label" data-i18n="cvLabel">Özgeçmiş — Mimarlık Öğrencisi</span>
+          <h2>Özgür<br>Kara</h2>
+        </div>
+        <div class="cv-dl">
+          <a class="btn" href="cv.pdf" download="Ozgur-Kara-Ozgecmis.pdf" data-i18n="cvTr">Özgeçmiş (TR) <span>↓</span></a>
+          <a class="btn" href="cv-en.pdf" download="Ozgur-Kara-CV.pdf" data-i18n="cvEn">CV (EN) <span>↓</span></a>
+        </div>
+      </div>
+
+      <div class="cv-grid">
+        <div class="label" data-i18n="profile">Profil</div>
+        <div class="body">
+          <p class="about" data-i18n="about">Tekirdağ Namık Kemal Üniversitesi Mimarlık Bölümü 4. sınıf öğrencisiyim; 2027'de mezun olacağım. Mimari tasarım, sürdürülebilir yapı yaklaşımları ve 3D modelleme üzerine çalışıyor, tasarım sürecinde BIM ve yapay zekâ destekli araçlar kullanıyorum. Detaylara önem veren, motivasyonu yüksek, ekip çalışmasına yatkın ve sürekli öğrenmeye açık biriyim.</p>
+        </div>
+
+        <div class="label" data-i18n="education">Eğitim</div>
+        <div class="body">
+          <div class="row"><span class="when">2023 — 2027</span><div><h3 data-i18n="degree">Mimarlık Lisans · Tekirdağ Namık Kemal Üniversitesi</h3><p data-i18n="degreeNote">Şu an 4. sınıf; 2027'de mezun olacağım.</p></div></div>
+        </div>
+
+        <div class="label" data-i18n="skills">Yetkinlikler</div>
+        <div class="body">
+          <div class="row"><span class="when" data-i18n="skBim">BIM ve çizim</span><div class="chips"><span>Revit</span><span>AutoCAD</span></div></div>
+          <div class="row"><span class="when" data-i18n="sk3d">3D modelleme</span><div class="chips"><span>Blender</span></div></div>
+          <div class="row"><span class="when" data-i18n="skPres">Sunum ve grafik</span><div class="chips"><span>Canva</span><span>Microsoft Office</span></div></div>
+          <div class="row"><span class="when" data-i18n="skAi">Yapay zekâ</span><div class="chips"><span data-i18n="skAiChip">Yapay zekâ destekli tasarım ve görselleştirme</span></div></div>
+        </div>
+
+        <div class="label" data-i18n="languages">Diller</div>
+        <div class="body chips"><span data-i18n="lnTr">Türkçe — Anadil</span><span data-i18n="lnEn">İngilizce — Orta (B1)</span><span data-i18n="lnDe">Almanca — Başlangıç (A1)</span></div>
+
+        <div class="label" id="contact" data-i18n="contact">İletişim</div>
+        <div class="body contact">
+          <a href="mailto:ozgurkara.arch@gmail.com"><small data-i18n="email">E-posta</small>ozgurkara.arch@gmail.com</a>
+          <a href="tel:+905515560051"><small data-i18n="phone">Telefon</small>+90 551 556 0051</a>
+          <span><small data-i18n="location">Konum</small>İzmir, Türkiye</span>
+        </div>
+      </div>
+
+      <footer><span>© 2026 Özgür Kara</span><span data-i18n="rights">Tüm hakları saklıdır</span></footer>
+    </section>
+  </main>
+
+  <!-- ================= Proje detayı + 3D maket ================= -->
+  <div class="detail" id="detail" aria-hidden="true">
+    <div class="detail-info">
+      <button class="detail-close" id="close"><b>✕</b><span data-i18n="close">Kapat</span></button>
+      <span class="idx d-idx"></span>
+      <h2 class="d-title"></h2>
+      <p class="d-type"></p>
+      <div class="d-actions"></div>
+      <dl class="d-facts"></dl>
+      <div class="d-desc"></div>
+      <div class="d-tags"></div>
+      <div class="d-gallery"></div>
+      <div class="detail-nav">
+        <button id="prev" data-i18n="prev">← Önceki</button>
+        <button id="next" data-i18n="next">Sonraki →</button>
+      </div>
+    </div>
+    <div class="detail-model">
+      <div id="maquette"></div>
+      <span class="model-label" data-i18n="maquette">3D Maket</span>
+      <span class="model-loading" id="model-loading" data-i18n="modelLoading">Model yükleniyor</span>
+      <p class="model-hint" data-i18n="modelHint">Sürükle — döndür<br>Tekerlek — yakınlaş<br>Sağ tık — kaydır</p>
+      <div class="model-ui">
+        <label><span data-i18n="sun">Güneş</span> <input type="range" id="sun" min="0" max="360" value="40"></label>
+        <button id="spin" class="on" data-i18n="spin">Döndür</button>
+        <button id="reset" data-i18n="reset">Sıfırla</button>
+        <button id="mode" hidden data-i18n="detailed">Detaylı model</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= Çizim görüntüleyici (plan / kesit / görünüş / detay) ================= -->
+  <div class="viewer" id="viewer" aria-hidden="true">
+    <div class="v-top">
+      <div class="v-head">
+        <span class="idx v-proj"></span>
+        <nav class="v-tabs"></nav>
+      </div>
+      <button class="v-close" id="v-close"><b>✕</b><span data-i18n="close">Kapat</span></button>
+    </div>
+    <div class="v-body">
+      <aside class="v-list"></aside>
+      <div class="v-stage" id="v-stage">
+        <img id="v-img" alt="" draggable="false" hidden>
+        <p class="v-empty" hidden></p>
+        <span class="v-loading" data-i18n="loading">Yükleniyor</span>
+      </div>
+    </div>
+    <div class="v-tools">
+      <span class="v-caption"></span>
+      <div class="v-buttons">
+        <button data-z="out" title="Uzaklaş" data-i18n-title="zoomOut">−</button>
+        <button data-z="fit" data-i18n="fit">Sığdır</button>
+        <button data-z="in" title="Yakınlaş" data-i18n-title="zoomIn">+</button>
+        <a class="v-open" target="_blank" rel="noopener" data-i18n="openTab">Yeni sekmede aç ↗</a>
+        <a class="v-pdf" download data-i18n="allSheets">Tüm paftalar (PDF) ↓</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="projects.js"></script>
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+    import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+    import { mergeVertices } from 'three/addons/utils/BufferGeometryUtils.js';
+
+    const PROJECTS = (window.PORTFOLIO && window.PORTFOLIO.projects) || [];
+    const $ = (s) => document.querySelector(s);
+    const $$ = (s) => [...document.querySelectorAll(s)];
+    const pad = (n) => String(n).padStart(2, '0');
+    const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    function mulberry32(a) {
+      return () => { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+    }
+
+    /* ================= Dil (TR / EN) ================= */
+    // Türkçe metinler HTML'de durur; İngilizceleri burada. data-i18n="anahtar" olan öğe çevrilir.
+    const EN = {
+      loading: 'Loading', explore: 'Explore', navProjects: 'Projects', contact: 'Contact',
+      eyebrow: 'Architecture Portfolio — 2026',
+      lead: 'Architecture student. I work on architectural design, sustainable building and 3D modeling. Scroll down to explore my projects.',
+      scroll: 'Scroll',
+      cvLabel: 'CV — Architecture Student', cvTr: 'CV (Turkish) <span>↓</span>', cvEn: 'CV (English) <span>↓</span>',
+      profile: 'Profile',
+      about: 'Fourth-year Architecture student at Tekirdağ Namık Kemal University, graduating in 2027. I focus on architectural design, sustainable building approaches and 3D modeling, using BIM and AI-assisted tools in the design process. Detail-oriented and motivated, I work well in teams and am always learning.',
+      education: 'Education', degree: 'Bachelor of Architecture · Tekirdağ Namık Kemal University', degreeNote: 'Currently in 4th year; graduating in 2027.',
+      skills: 'Skills', skBim: 'BIM & drafting', sk3d: '3D modeling', skPres: 'Presentation & graphics', skAi: 'AI tools', skAiChip: 'AI-assisted design and visualization',
+      languages: 'Languages', lnTr: 'Turkish — Native', lnEn: 'English — Intermediate (B1)', lnDe: 'German — Beginner (A1)',
+      email: 'Email', phone: 'Phone', location: 'Location', rights: 'All rights reserved',
+      close: 'Close', prev: '← Previous', next: 'Next →',
+      maquette: '3D Model', modelLoading: 'Loading model', modelHint: 'Drag — rotate<br>Wheel — zoom<br>Right-click — pan',
+      sun: 'Sun', spin: 'Rotate', reset: 'Reset', detailed: 'Detailed model',
+      zoomOut: 'Zoom out', zoomIn: 'Zoom in', fit: 'Fit', openTab: 'Open in new tab ↗', allSheets: 'All sheets (PDF) ↓',
+      // Kodun ürettiği metinler
+      viewProject: 'View project', fYear: 'Year', fArea: 'Area', fStatus: 'Status', fRole: 'My role',
+      drawings: 'Drawings', nDrawings: (n) => n + (n === 1 ? ' drawing' : ' drawings'), soon: 'Coming soon',
+      plans: 'Floor Plans', sections: 'Sections', elevations: 'Elevations', details: 'Details', images: 'Images', image: 'Image',
+      emptyTab: 'This section is coming soon.', loadFail: 'Could not load drawing: ',
+      title: 'Özgür Kara — Architecture Portfolio',
+      desc: 'Özgür Kara — architecture student. Projects, 3D models, technical drawings and CV.'
+    };
+    const TR = {
+      viewProject: 'Projeyi incele', fYear: 'Yıl', fArea: 'Alan', fStatus: 'Durum', fRole: 'Rolüm',
+      drawings: 'Çizimler', nDrawings: (n) => n + ' çizim', soon: 'Yakında',
+      plans: 'Kat Planları', sections: 'Kesitler', elevations: 'Görünüşler', details: 'Detaylar', images: 'Görseller', image: 'Görsel',
+      emptyTab: 'Bu bölüm yakında eklenecek.', loadFail: 'Çizim yüklenemedi: '
+    };
+    // HTML'deki Türkçe metinler ilk açılışta saklanır
+    $$('[data-i18n]').forEach((el) => { TR[el.dataset.i18n] = el.innerHTML; });
+    $$('[data-i18n-title]').forEach((el) => { TR[el.dataset.i18nTitle] = el.title; });
+    TR.title = document.title;
+    TR.desc = $('meta[name=description]').content;
+
+    let lang = new URLSearchParams(location.search).get('lang');
+    if (!lang) { try { lang = localStorage.getItem('lang'); } catch (e) { /* gizli pencere */ } }
+    if (lang !== 'en') lang = 'tr';
+    const t = (k) => (lang === 'en' ? EN : TR)[k];
+    // Projelerdeki "en: { ... }" alanı varsa İngilizcede o kullanılır
+    const L = (o, k) => (lang === 'en' && o.en && o.en[k] != null ? o.en[k] : o[k]);
+
+    function applyLang() {
+      document.documentElement.lang = lang;
+      document.title = t('title');
+      $('meta[name=description]').content = t('desc');
+      $$('[data-i18n]').forEach((el) => { el.innerHTML = t(el.dataset.i18n); });
+      $$('[data-i18n-title]').forEach((el) => { el.title = t(el.dataset.i18nTitle); });
+      $('#lang').textContent = lang === 'en' ? 'TR' : 'EN';
+    }
+    $('#lang').addEventListener('click', () => {
+      lang = lang === 'en' ? 'tr' : 'en';
+      try { localStorage.setItem('lang', lang); } catch (e) { /* gizli pencere */ }
+      applyLang();
+      renderProjects();
+      if (overlayOpen) fillDetail(PROJECTS[current], current);
+      if (vOpen) openViewer(vProject, vTab, vIndex);
+    });
+
+    /* ================= HTML: proje bölümleri ================= */
+    const projWrap = $('#projects');
+    const dots = $('#dots');
+    PROJECTS.forEach((p, i) => {
+      const s = document.createElement('section');
+      s.className = 'project ' + (i % 2 === 0 ? 'text-left' : 'text-right');
+      s.id = 'p-' + (p.id || i);
+      projWrap.appendChild(s);
+      const d = document.createElement('a');
+      d.href = '#' + s.id;
+      d.textContent = pad(i + 1);
+      dots.appendChild(d);
+    });
+    function renderProjects() {
+      PROJECTS.forEach((p, i) => {
+        projWrap.children[i].innerHTML = `
+          <div class="project-card">
+            <span class="idx">${pad(i + 1)} / ${pad(PROJECTS.length)}</span>
+            <h2>${esc(L(p, 'title'))}</h2>
+            <p class="meta">${esc(L(p, 'type'))}<br>${[L(p, 'location'), p.year].filter(Boolean).map(esc).join(' — ')}</p>
+            <button class="btn" data-open="${i}">${t('viewProject')} <span>↗</span></button>
+          </div>`;
+        dots.children[i].title = L(p, 'title');
+      });
+    }
+    applyLang();
+    renderProjects();
+    document.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-open]');
+      if (b) openProject(+b.dataset.open);
+    });
+
+    /* ================= Ana sahne ================= */
+    const canvas = $('#scene');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.setSize(innerWidth, innerHeight);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+
+    const BG = '#0a0c0f';
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(BG);
+    scene.fog = new THREE.Fog(BG, 9, 22);
+    scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture;
+
+    const camera = new THREE.PerspectiveCamera(40, innerWidth / innerHeight, 0.1, 100);
+    camera.position.set(0, 0, 8);
+
+    scene.add(new THREE.HemisphereLight('#dfefff', '#0a0c0f', 1.2));
+    const key = new THREE.DirectionalLight('#ffffff', 2.2);
+    key.position.set(5, 8, 6);
+    scene.add(key, key.target);
+
+    const iceMat = new THREE.MeshPhysicalMaterial({
+      color: '#f2f8fc', metalness: 0, roughness: 0.07,
+      transmission: 1, thickness: 0.9, ior: 1.3,
+      attenuationColor: new THREE.Color('#b9d6ea'), attenuationDistance: 7,
+      clearcoat: 0.5, envMapIntensity: 2.2, flatShading: true
+    });
+    // Arkadan gelen soğuk ışık taşların kenarlarını parlatır
+    const rim = new THREE.DirectionalLight('#9fd0ff', 3);
+    rim.position.set(-6, 3, -8);
+    scene.add(rim);
+
+    // Rastgele köşeli taş geometrisi
+    function rockGeometry(radius, seed) {
+      let g = new THREE.IcosahedronGeometry(radius, 1);
+      g.deleteAttribute('normal');
+      g.deleteAttribute('uv');
+      g = mergeVertices(g);
+      const rnd = mulberry32(seed);
+      const pos = g.attributes.position, v = new THREE.Vector3();
+      const sx = 0.85 + rnd() * 0.3, sy = 0.8 + rnd() * 0.35, sz = 0.85 + rnd() * 0.3;
+      for (let i = 0; i < pos.count; i++) {
+        v.fromBufferAttribute(pos, i).multiplyScalar(0.84 + rnd() * 0.28);
+        pos.setXYZ(i, v.x * sx, v.y * sy, v.z * sz);
+      }
+      g.computeVertexNormals();
+      return g;
+    }
+    const edgesOf = (geo, opacity) => new THREE.LineSegments(
+      new THREE.EdgesGeometry(geo, 1),
+      new THREE.LineBasicMaterial({ color: '#ffffff', transparent: true, opacity })
+    );
+
+    /* ================= Bina maketleri ================= */
+    function makeMats(stone) {
+      return {
+        white: new THREE.MeshStandardMaterial({ color: '#f4f2ee', roughness: 0.85 }),
+        grey: new THREE.MeshStandardMaterial({ color: '#d4d0c9', roughness: 0.9 }),
+        wood: new THREE.MeshStandardMaterial({ color: '#c49a6c', roughness: 0.8 }),
+        green: new THREE.MeshStandardMaterial({ color: '#a7b59a', roughness: 1 }),
+        water: new THREE.MeshStandardMaterial({ color: '#7fa7bd', roughness: 0.15, metalness: 0.2 }),
+        // Taşın içinde şeffaf cam sıralama sorunu çıkarır, orada opak kullanılır
+        glass: stone
+          ? new THREE.MeshStandardMaterial({ color: '#9fb8c8', roughness: 0.2, metalness: 0.1 })
+          : new THREE.MeshPhysicalMaterial({ color: '#a9c4d4', roughness: 0.05, transparent: true, opacity: 0.45 })
+      };
+    }
+    // y değeri kutunun tabanıdır
+    function box(w, h, d, mat, x = 0, y = 0, z = 0) {
+      const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
+      m.position.set(x, y + h / 2, z);
+      return m;
+    }
+    function cyl(r, h, mat, x = 0, y = 0, z = 0) {
+      const m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, h, 40), mat);
+      m.position.set(x, y + h / 2, z);
+      return m;
+    }
+    function tree(M, x, z, s = 1, y = 0) {
+      const g = new THREE.Group();
+      const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.04, 0.35, 6), M.wood);
+      trunk.position.y = 0.175;
+      const crown = new THREE.Mesh(new THREE.IcosahedronGeometry(0.28, 0), M.green);
+      crown.position.y = 0.5;
+      g.add(trunk, crown);
+      g.position.set(x, y, z);
+      g.scale.setScalar(s);
+      return g;
+    }
+
+    const GENERATORS = {
+      tower(g, M) {
+        const floors = 16, fh = 0.3;
+        g.add(box(2.8, 0.12, 2.8, M.grey));
+        for (let i = 0; i < floors; i++) {
+          const f = new THREE.Group();
+          f.position.y = 0.12 + i * fh;
+          f.rotation.y = i * 0.05;
+          f.add(box(1.9, fh - 0.05, 1.9, M.glass));
+          f.add(box(2.25, 0.05, 2.25, M.white, 0, fh - 0.05, 0));
+          g.add(f);
+        }
+        g.add(box(1.1, 0.35, 1.1, M.white, 0, 0.12 + floors * fh, 0));
+      },
+      terraces(g, M) {
+        for (let i = 0; i < 5; i++) {
+          const w = 4.2 - i * 0.7, x = -i * 0.35, y = i * 0.6;
+          g.add(box(w, 0.6, 2.6, M.white, x, y, 0));
+          g.add(box(w - 0.2, 0.42, 0.04, M.glass, x, y + 0.09, 1.3));
+          if (i < 4) {
+            g.add(box(0.66, 0.04, 2.4, M.green, x + w / 2 - 0.35, y + 0.6, 0));
+            g.add(tree(M, x + w / 2 - 0.3, -0.7, 0.55, y + 0.64));
+          }
+        }
+      },
+      pavilion(g, M) {
+        g.add(box(4.4, 0.15, 3.2, M.grey));
+        for (const x of [-1.9, -0.95, 0, 0.95, 1.9]) {
+          for (const z of [-1.3, 1.3]) g.add(cyl(0.04, 1.2, M.white, x, 0.15, z));
+        }
+        g.add(box(4.8, 0.12, 3.6, M.white, 0, 1.35, 0));
+        g.add(box(2.8, 1.2, 1.8, M.glass, 0.3, 0.15, 0));
+        g.add(box(0.6, 1.2, 1.8, M.wood, -1.4, 0.15, 0));
+        g.add(box(4.4, 0.04, 1.2, M.water, 0, 0, 2.4));
+      },
+      villa(g, M) {
+        g.add(box(3.2, 0.8, 2, M.white));
+        g.add(box(2.6, 0.7, 0.04, M.glass, 0, 0.05, 1.0));
+        g.add(box(1.6, 0.8, 3.6, M.white, 0.9, 0.8, 0.4));
+        g.add(box(1.4, 0.6, 0.04, M.glass, 0.9, 0.9, 2.21));
+        g.add(box(1.8, 0.05, 1.4, M.wood, -0.9, 0, 1.75));
+        g.add(box(1.4, 0.07, 1.0, M.water, -0.9, 0, 1.75));
+        g.add(tree(M, -1.9, -1.4, 0.8));
+      },
+      courtyard(g, M) {
+        g.add(box(4, 1.0, 1, M.white, 0, 0, -1.5));
+        g.add(box(4, 0.8, 1, M.white, 0, 0, 1.5));
+        g.add(box(1, 1.6, 2, M.white, -1.5, 0, 0));
+        g.add(box(1, 1.2, 2, M.white, 1.5, 0, 0));
+        g.add(box(3.6, 0.3, 0.04, M.glass, 0, 0.4, -0.99));
+        g.add(box(3.6, 0.3, 0.04, M.glass, 0, 0.3, 0.99));
+        g.add(box(0.04, 0.5, 1.8, M.glass, -0.99, 0.6, 0));
+        g.add(box(2, 0.03, 2, M.green));
+        g.add(tree(M, 0, 0, 1.3));
+      },
+      cylinder(g, M) {
+        const floors = 13, fh = 0.3;
+        for (let i = 0; i < floors; i++) {
+          const y = i * fh;
+          g.add(cyl(0.95, fh - 0.05, M.glass, 0, y, 0));
+          g.add(cyl(1.2, 0.05, M.white, Math.sin(i * 0.7) * 0.14, y + fh - 0.05, Math.cos(i * 0.5) * 0.14));
+        }
+        g.add(cyl(0.5, 0.3, M.white, 0, floors * fh, 0));
+      }
+    };
+
+    function buildProcedural(type, stone) {
+      const g = new THREE.Group();
+      (GENERATORS[type] || GENERATORS.tower)(g, makeMats(stone));
+      return g;
+    }
+
+    // Kendi .glb modelin varsa onu yükler, yoksa örnek maketi üretir
+    const gltfLoader = new GLTFLoader();
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/libs/draco/gltf/');
+    gltfLoader.setDRACOLoader(dracoLoader);
+    const gltfCache = {};
+    // Taş içinde varsa hafif sürüm (stoneModel), makette tam model kullanılır
+    function fetchGLB(url) {
+      if (location.protocol !== 'file:') {
+        return new Promise((res, rej) => gltfLoader.load(url, (g) => res(g.scene), undefined, rej));
+      }
+      // Çift tıklanarak açıldıysa tarayıcı .glb okumaz; modelin .glb.js kopyası yüklenir (modelleri-hazirla.bat)
+      return new Promise((res, rej) => {
+        const tag = document.createElement('script');
+        tag.src = url + '.js';
+        tag.onerror = () => rej(new Error(url + '.js bulunamadı — modelleri-hazirla.bat çalıştır'));
+        tag.onload = () => {
+          const b64 = (window.__GLB || {})[url];
+          if (!b64) return rej(new Error('Gömülü model yok: ' + url));
+          const bin = atob(b64), bytes = new Uint8Array(bin.length);
+          for (let k = 0; k < bin.length; k++) bytes[k] = bin.charCodeAt(k);
+          gltfLoader.parse(bytes.buffer, '', (g) => res(g.scene), rej);
+        };
+        document.head.appendChild(tag);
+      });
+    }
+    function loadGLB(url) {
+      gltfCache[url] = gltfCache[url] || fetchGLB(url);
+      return gltfCache[url].then((s) => s.clone(true));
+    }
+    function getModel(p, stone) {
+      const url = (stone && p.stoneModel) || p.model;
+      if (url) {
+        return loadGLB(url).catch((err) => { console.warn('Model yüklenemedi:', url, err); return buildProcedural(p.generator, stone); });
+      }
+      return Promise.resolve(buildProcedural(p.generator, stone));
+    }
+
+    // Modeli ortalar ve verilen ölçülere sığdırır
+    function fitModel(obj, maxFoot, maxH, centerY) {
+      const b = new THREE.Box3().setFromObject(obj);
+      const size = b.getSize(new THREE.Vector3()), c = b.getCenter(new THREE.Vector3());
+      obj.position.x -= c.x;
+      obj.position.z -= c.z;
+      obj.position.y -= centerY ? c.y : b.min.y;
+      const k = Math.min(maxFoot / Math.max(size.x, size.z, 1e-6), maxH / Math.max(size.y, 1e-6));
+      const wrap = new THREE.Group();
+      wrap.add(obj);
+      wrap.scale.setScalar(k);
+      wrap.userData.height = size.y * k;
+      return wrap;
+    }
+
+    /* ================= Hero kristali ================= */
+    const hero = new THREE.Group();
+    scene.add(hero);
+    const heroRock = new THREE.Mesh(rockGeometry(1.8, 7), iceMat);
+    const heroCore = new THREE.LineSegments(
+      new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(0.55, 0)),
+      new THREE.LineBasicMaterial({ color: '#bfe3ff' })
+    );
+    const coreLight = new THREE.PointLight('#cfe9ff', 8, 6);
+    hero.add(heroRock, edgesOf(heroRock.geometry, 0.22), heroCore, coreLight);
+    const shards = [];
+    {
+      const rnd = mulberry32(42);
+      for (let i = 0; i < 10; i++) {
+        const m = new THREE.Mesh(rockGeometry(0.1 + rnd() * 0.25, 100 + i), iceMat);
+        const g = new THREE.Group();
+        g.add(m, edgesOf(m.geometry, 0.2));
+        hero.add(g);
+        shards.push({ g, radius: 2.4 + rnd() * 1.6, speed: 0.1 + rnd() * 0.25, phase: rnd() * Math.PI * 2, tilt: (rnd() - 0.5) * 1.2 });
+      }
+    }
+
+    /* ================= Proje taşları ================= */
+    const stones = PROJECTS.map((p, i) => {
+      const group = new THREE.Group();
+      const geo = rockGeometry(1.45, i * 97 + 13);
+      const rock = new THREE.Mesh(geo, iceMat);
+      rock.userData.index = i;
+      const edges = edgesOf(geo, 0.12);
+      const inner = new THREE.Group();
+      group.add(rock, edges, inner);
+      scene.add(group);
+      const s = { group, rock, inner, i, side: i % 2 === 0 ? 1 : -1, hover: 0, baseX: 0, baseY: 0, scale: 1, tilt: 0, edgeBase: 0.12, edgeMat: edges.material };
+      const inRock = () => getModel(p, true).then((m) => inner.add(fitModel(m, 1.3, 1.3, true)));
+
+      if (!p.schematic) {
+        inRock();
+        return s;
+      }
+      // Şematik model taşın yerini alır; görünmez taş tıklama alanı olarak kalır
+      rock.visible = edges.visible = false;
+      const lineMat = new THREE.LineBasicMaterial({ color: '#ffffff', transparent: true, opacity: 0.3 });
+      Object.assign(s, { tilt: 0.35, edgeBase: 0.3, edgeMat: lineMat });
+      loadGLB(p.schematic).then((m) => {
+        const w = fitModel(m, 2.7, 2.7, true);
+        const meshes = [];
+        w.traverse((o) => { if (o.isMesh) meshes.push(o); });
+        meshes.forEach((o) => o.add(new THREE.LineSegments(new THREE.EdgesGeometry(o.geometry, 20), lineMat)));
+        inner.add(w);
+      }).catch((err) => {
+        console.warn('Şematik model yüklenemedi:', p.schematic, err);
+        rock.visible = edges.visible = true;
+        Object.assign(s, { tilt: 0, edgeBase: 0.12, edgeMat: edges.material });
+        inRock();
+      });
+      return s;
+    });
+
+    /* ================= Yerleşim ================= */
+    let viewH = 1, viewW = 1;
+    function layout() {
+      viewH = 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.position.z;
+      viewW = viewH * camera.aspect;
+      const mobile = camera.aspect < 0.85;
+      const scale = Math.min(1, viewW / 4.4);
+      stones.forEach((s) => {
+        s.baseX = mobile ? 0 : s.side * viewW * 0.22;
+        s.baseY = -(s.i + 1) * viewH + (mobile ? viewH * 0.14 : 0);
+        s.scale = scale;
+      });
+      hero.position.set(mobile ? 0 : viewW * 0.18, mobile ? viewH * 0.16 : viewH * 0.06, 0);
+      hero.scale.setScalar(mobile ? scale * 0.75 : 1);
+    }
+    layout();
+
+    // Uçuşan buz tozları
+    {
+      const N = 1400, pos = new Float32Array(N * 3), r = mulberry32(5);
+      const top = viewH * 1.5, bottom = -(PROJECTS.length + 4) * viewH;
+      for (let i = 0; i < N; i++) {
+        pos[i * 3] = (r() - 0.5) * 24;
+        pos[i * 3 + 1] = top + (bottom - top) * r();
+        pos[i * 3 + 2] = -12 + r() * 15;
+      }
+      const g = new THREE.BufferGeometry();
+      g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+      scene.add(new THREE.Points(g, new THREE.PointsMaterial({ size: 0.035, color: '#cfe3f0', transparent: true, opacity: 0.6, depthWrite: false })));
+    }
+
+    addEventListener('resize', () => {
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(innerWidth, innerHeight);
+      layout();
+    });
+
+    /* ================= Fare / dokunma ================= */
+    const ray = new THREE.Raycaster();
+    const ndc = new THREE.Vector2();
+    const mouse = new THREE.Vector2(), mouseSmooth = new THREE.Vector2();
+    const tag = $('#tag');
+    let hovered = null;
+    function pick(x, y) {
+      ndc.set((x / innerWidth) * 2 - 1, -(y / innerHeight) * 2 + 1);
+      ray.setFromCamera(ndc, camera);
+      const hit = ray.intersectObjects(stones.map((s) => s.rock), false)[0];
+      return hit ? stones[hit.object.userData.index] : null;
+    }
+    canvas.addEventListener('pointermove', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      mouse.set((e.clientX / innerWidth) * 2 - 1, -(e.clientY / innerHeight) * 2 + 1);
+      hovered = pick(e.clientX, e.clientY);
+      canvas.style.cursor = hovered ? 'pointer' : '';
+      tag.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      tag.classList.toggle('show', !!hovered);
+      if (hovered) tag.querySelector('b').textContent = L(PROJECTS[hovered.i], 'title');
+    });
+    canvas.addEventListener('pointerleave', () => { hovered = null; tag.classList.remove('show'); });
+    canvas.addEventListener('click', (e) => {
+      const s = pick(e.clientX, e.clientY);
+      if (s) openProject(s.i);
+    });
+
+    /* ================= Proje detayı ================= */
+    const detail = $('#detail');
+    let current = -1, overlayOpen = false, mq = null;
+
+    function fillDetail(p, i) {
+      $('.d-idx').textContent = `${pad(i + 1)} / ${pad(PROJECTS.length)}`;
+      $('.d-title').textContent = L(p, 'title');
+      $('.d-type').textContent = L(p, 'type') || '';
+      const facts = [[t('location'), L(p, 'location')], [t('fYear'), p.year], [t('fArea'), L(p, 'area')], [t('fStatus'), L(p, 'status')], [t('fRole'), L(p, 'role')]].filter((f) => f[1]);
+      $('.d-facts').innerHTML = facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('');
+      const d = L(p, 'description'), desc = Array.isArray(d) ? d : [d];
+      $('.d-desc').innerHTML = desc.filter(Boolean).map((s) => `<p>${esc(s)}</p>`).join('');
+      $('.d-tags').innerHTML = (L(p, 'tags') || []).map((s) => `<span>${esc(s)}</span>`).join('');
+      $('.d-gallery').innerHTML = (p.images || []).map((src, n) =>
+        `<button data-gal="${n}"><img src="${esc(src)}" alt="${esc(L(p, 'title'))}" loading="lazy"></button>`).join('');
+      $('.d-actions').innerHTML = p.drawings ? `
+        <span class="label">${t('drawings')}</span>
+        <div class="d-draw">
+          ${DRAW_TABS.filter((k) => k !== 'images').map((k) => {
+            const n = tabItems(p, k).length;
+            return `<button data-view="${k}"><b>${t(k)}</b><small>${n ? t('nDrawings')(n) : t('soon')}</small></button>`;
+          }).join('')}
+        </div>` : '';
+      $('.detail-info').scrollTop = 0;
+    }
+
+    function initMaquette() {
+      const el = $('#maquette');
+      const r = new THREE.WebGLRenderer({ antialias: true });
+      r.setPixelRatio(Math.min(devicePixelRatio, 2));
+      r.shadowMap.enabled = true;
+      r.shadowMap.type = THREE.PCFSoftShadowMap;
+      r.toneMapping = THREE.ACESFilmicToneMapping;
+      el.appendChild(r.domElement);
+
+      const sc = new THREE.Scene();
+      sc.background = new THREE.Color('#e7e3dc');
+      sc.environment = new THREE.PMREMGenerator(r).fromScene(new RoomEnvironment(), 0.04).texture;
+      sc.add(new THREE.HemisphereLight('#ffffff', '#b8b0a4', 0.6));
+
+      const sun = new THREE.DirectionalLight('#fff6ea', 2.6);
+      sun.castShadow = true;
+      sun.shadow.mapSize.set(2048, 2048);
+      Object.assign(sun.shadow.camera, { left: -7, right: 7, top: 7, bottom: -7, near: 1, far: 40 });
+      sun.shadow.bias = -0.0005;
+      sun.shadow.normalBias = 0.02;
+      sc.add(sun, sun.target);
+
+      // Maket tablası: ahşap kaide + beyaz zemin + ağaçlar
+      const M = makeMats(false);
+      const plinth = box(7.6, 0.5, 7.6, M.wood, 0, -0.54, 0);
+      const board = box(7.3, 0.04, 7.3, M.white, 0, -0.04, 0);
+      board.receiveShadow = true;
+      plinth.castShadow = true;
+      const ground = new THREE.Mesh(new THREE.PlaneGeometry(60, 60), new THREE.ShadowMaterial({ opacity: 0.12 }));
+      ground.rotation.x = -Math.PI / 2;
+      ground.position.y = -0.54;
+      ground.receiveShadow = true;
+      sc.add(plinth, board, ground);
+      // Örnek maketlerin etrafındaki ağaçlar (kendi modelin varsa gizlenir)
+      const trees = new THREE.Group();
+      const rnd = mulberry32(3);
+      for (let n = 0; n < 16;) {
+        const x = (rnd() - 0.5) * 6.6, z = (rnd() - 0.5) * 6.6;
+        if (Math.max(Math.abs(x), Math.abs(z)) < 2.8) continue;
+        const t = tree(M, x, z, 0.8 + rnd() * 0.6);
+        t.traverse((o) => { o.castShadow = true; });
+        trees.add(t);
+        n++;
+      }
+      sc.add(trees);
+
+      const holder = new THREE.Group();
+      sc.add(holder);
+
+      const cam = new THREE.PerspectiveCamera(35, 1, 0.1, 200);
+      const controls = new OrbitControls(cam, r.domElement);
+      Object.assign(controls, { enableDamping: true, dampingFactor: 0.06, minDistance: 3, maxDistance: 26, maxPolarAngle: Math.PI * 0.49, autoRotate: true, autoRotateSpeed: 0.8 });
+      controls.addEventListener('start', () => setSpin(false));
+
+      new ResizeObserver(() => {
+        const w = el.clientWidth, h = el.clientHeight;
+        if (!w || !h) return;
+        r.setSize(w, h, false);
+        cam.aspect = w / h;
+        cam.updateProjectionMatrix();
+      }).observe(el);
+
+      mq = { r, sc, cam, controls, holder, sun, trees, home: null };
+      setSun(+$('#sun').value);
+    }
+
+    function setSun(deg) {
+      const a = THREE.MathUtils.degToRad(deg);
+      mq.sun.position.set(Math.cos(a) * 9, 10, Math.sin(a) * 9);
+    }
+    function setSpin(on) {
+      mq.controls.autoRotate = on;
+      $('#spin').classList.toggle('on', on);
+    }
+    function goHome() {
+      if (!mq.home) return;
+      mq.cam.position.copy(mq.home.pos);
+      mq.controls.target.copy(mq.home.target);
+      mq.controls.update();
+    }
+
+    function openProject(i) {
+      if (!PROJECTS.length) return;
+      i = (i + PROJECTS.length) % PROJECTS.length;
+      current = i;
+      const p = PROJECTS[i];
+      fillDetail(p, i);
+      detail.classList.add('open');
+      detail.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('lock');
+      tag.classList.remove('show');
+      overlayOpen = true;
+      if (!mq) initMaquette();
+      loadMaquette(p, i);
+    }
+
+    // Şematik model varsa makette o gösterilir; "Detaylı model" düğmesiyle tam modele geçilir
+    let detailed = false, maqToken = 0;
+    function loadMaquette(p, i) {
+      const token = ++maqToken;
+      const hasBoth = !!(p.schematic && p.model);
+      $('#mode').hidden = !hasBoth;
+      $('#mode').classList.toggle('on', detailed);
+      const useSchematic = p.schematic && !(hasBoth && detailed);
+      mq.holder.clear();
+      mq.trees.visible = !p.model && !p.schematic;
+      $('#model-loading').classList.add('show');
+      const src = useSchematic ? loadGLB(p.schematic).catch(() => getModel(p, false)) : getModel(p, false);
+      src.then((m) => {
+        if (current !== i || token !== maqToken) return;
+        $('#model-loading').classList.remove('show');
+        const w = fitModel(m, 4.6, 5, false);
+        w.traverse((o) => {
+          if (!o.isMesh) return;
+          o.receiveShadow = true;
+          o.castShadow = !(o.material && o.material.transparent);
+        });
+        mq.holder.add(w);
+        const h = w.userData.height, d = 11 + h * 1.1;
+        mq.home = {
+          target: new THREE.Vector3(0, Math.min(h * 0.4, 1.8), 0),
+          pos: new THREE.Vector3(d * 0.7, h * 0.6 + d * 0.45, d * 0.7)
+        };
+        goHome();
+        setSpin(true);
+      });
+    }
+
+    function closeProject() {
+      detail.classList.remove('open');
+      detail.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('lock');
+      overlayOpen = false;
+    }
+
+    $('#close').addEventListener('click', closeProject);
+    $('#prev').addEventListener('click', () => openProject(current - 1));
+    $('#next').addEventListener('click', () => openProject(current + 1));
+    $('#sun').addEventListener('input', (e) => setSun(+e.target.value));
+    $('#spin').addEventListener('click', () => setSpin(!mq.controls.autoRotate));
+    $('#reset').addEventListener('click', goHome);
+    $('#mode').addEventListener('click', () => {
+      detailed = !detailed;
+      loadMaquette(PROJECTS[current], current);
+    });
+    addEventListener('keydown', (e) => {
+      if (vOpen) {
+        const items = tabItems(vProject, vTab);
+        if (e.key === 'Escape') closeViewer();
+        if (e.key === 'ArrowRight' && items.length) showItem((vIndex + 1) % items.length);
+        if (e.key === 'ArrowLeft' && items.length) showItem((vIndex - 1 + items.length) % items.length);
+        return;
+      }
+      if (!overlayOpen) return;
+      if (e.key === 'Escape') closeProject();
+      if (e.key === 'ArrowRight') openProject(current + 1);
+      if (e.key === 'ArrowLeft') openProject(current - 1);
+    });
+
+    /* ================= Çizim görüntüleyici ================= */
+    const DRAW_TABS = ['plans', 'sections', 'elevations', 'details', 'images'];
+    const viewer = $('#viewer'), vStage = $('#v-stage'), vImg = $('#v-img');
+    let vOpen = false, vProject = null, vTab = 'plans', vIndex = 0;
+    const view = { s: 1, x: 0, y: 0, fit: 1 };
+
+    function tabItems(p, key) {
+      if (key === 'images') return (p.images || []).map((src, n) => ({ title: `${t('image')} ${pad(n + 1)}`, src }));
+      return ((p.drawings && p.drawings[key]) || []).map((it) => ({ ...it, title: L(it, 'title'), note: L(it, 'note') }));
+    }
+
+    function openViewer(p, tab = 'plans', index = 0) {
+      vProject = p;
+      vOpen = true;
+      viewer.classList.add('open');
+      viewer.setAttribute('aria-hidden', 'false');
+      $('.v-proj').textContent = L(p, 'title');
+      const tabs = DRAW_TABS.filter((k) => k !== 'images' || (p.images || []).length);
+      $('.v-tabs').innerHTML = tabs.map((k) => {
+        const n = tabItems(p, k).length;
+        return `<button data-tab="${k}">${t(k)}${n ? ` <sup>${n}</sup>` : ''}</button>`;
+      }).join('');
+      const pdf = $('.v-pdf');
+      pdf.hidden = !p.drawingsPdf;
+      if (p.drawingsPdf) pdf.href = p.drawingsPdf;
+      showTab(tab, index);
+    }
+
+    function closeViewer() {
+      vOpen = false;
+      viewer.classList.remove('open');
+      viewer.setAttribute('aria-hidden', 'true');
+    }
+
+    function showTab(tab, index = 0) {
+      vTab = tab;
+      $$('.v-tabs button').forEach((b) => b.classList.toggle('on', b.dataset.tab === tab));
+      const items = tabItems(vProject, tab);
+      $('.v-list').innerHTML = items.map((it, n) =>
+        `<button data-item="${n}"><b>${esc(it.title)}</b>${it.note ? `<small>${esc(it.note)}</small>` : ''}</button>`).join('');
+      const empty = $('.v-empty');
+      if (!items.length) {
+        vImg.hidden = true;
+        vStage.classList.remove('loading');
+        empty.hidden = false;
+        empty.textContent = t('emptyTab');
+        $('.v-caption').textContent = '';
+        $('.v-open').hidden = true;
+        return;
+      }
+      empty.hidden = true;
+      showItem(Math.min(index, items.length - 1));
+    }
+
+    function showItem(n) {
+      const it = tabItems(vProject, vTab)[n];
+      vIndex = n;
+      $$('.v-list button').forEach((b) => b.classList.toggle('on', +b.dataset.item === n));
+      $('.v-caption').textContent = it.title + (it.note ? ' — ' + it.note : '');
+      const open = $('.v-open');
+      open.hidden = false;
+      open.href = it.src;
+      $('.v-empty').hidden = true;
+      vImg.hidden = true;
+      vStage.classList.add('loading');
+      const done = () => { vStage.classList.remove('loading'); vImg.hidden = false; fitView(); };
+      vImg.onload = done;
+      vImg.onerror = () => {
+        vStage.classList.remove('loading');
+        $('.v-empty').hidden = false;
+        $('.v-empty').textContent = t('loadFail') + it.src;
+      };
+      if (vImg.getAttribute('src') === it.src && vImg.complete && vImg.naturalWidth) done();
+      else vImg.src = it.src;
+    }
+
+    function applyView() {
+      vImg.style.width = vImg.naturalWidth * view.s + 'px';
+      vImg.style.transform = `translate(${view.x}px, ${view.y}px)`;
+    }
+    function fitView() {
+      const r = vStage.getBoundingClientRect(), iw = vImg.naturalWidth || 1, ih = vImg.naturalHeight || 1;
+      view.fit = view.s = Math.min(r.width / iw, r.height / ih) * 0.94;
+      view.x = (r.width - iw * view.s) / 2;
+      view.y = (r.height - ih * view.s) / 2;
+      applyView();
+    }
+    // Sabit bir ekran noktasının altındaki çizim yerinde kalacak şekilde yakınlaştır
+    function zoomAt(cx, cy, f) {
+      const ns = THREE.MathUtils.clamp(view.s * f, view.fit * 0.5, view.fit * 16);
+      view.x = cx - (cx - view.x) * (ns / view.s);
+      view.y = cy - (cy - view.y) * (ns / view.s);
+      view.s = ns;
+      applyView();
+    }
+    const stagePoint = (e) => { const r = vStage.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+
+    vStage.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      zoomAt(...stagePoint(e), Math.exp(-e.deltaY * 0.0015));
+    }, { passive: false });
+    vStage.addEventListener('dblclick', (e) => {
+      if (view.s > view.fit * 1.5) fitView();
+      else zoomAt(...stagePoint(e), 2.5);
+    });
+
+    // Sürükleyerek kaydırma, iki parmakla yakınlaştırma
+    const touches = new Map();
+    let pinch = null;
+    const pinchState = () => {
+      const [a, b] = [...touches.values()];
+      return { d: Math.hypot(a.x - b.x, a.y - b.y) || 1, cx: (a.x + b.x) / 2, cy: (a.y + b.y) / 2 };
+    };
+    vStage.addEventListener('pointerdown', (e) => {
+      vStage.setPointerCapture(e.pointerId);
+      touches.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      pinch = touches.size === 2 ? pinchState() : null;
+    });
+    vStage.addEventListener('pointermove', (e) => {
+      const prev = touches.get(e.pointerId);
+      if (!prev) return;
+      const cur = { x: e.clientX, y: e.clientY };
+      touches.set(e.pointerId, cur);
+      if (touches.size === 1) {
+        view.x += cur.x - prev.x;
+        view.y += cur.y - prev.y;
+        applyView();
+      } else if (touches.size === 2 && pinch) {
+        const now = pinchState(), r = vStage.getBoundingClientRect();
+        view.x += now.cx - pinch.cx;
+        view.y += now.cy - pinch.cy;
+        zoomAt(now.cx - r.left, now.cy - r.top, now.d / pinch.d);
+        pinch = now;
+      }
+    });
+    const endTouch = (e) => { touches.delete(e.pointerId); pinch = touches.size === 2 ? pinchState() : null; };
+    vStage.addEventListener('pointerup', endTouch);
+    vStage.addEventListener('pointercancel', endTouch);
+
+    $('#v-close').addEventListener('click', closeViewer);
+    viewer.addEventListener('click', (e) => {
+      const t = e.target.closest('[data-tab], [data-item], [data-z]');
+      if (!t) return;
+      if (t.dataset.tab) showTab(t.dataset.tab);
+      else if (t.dataset.item) showItem(+t.dataset.item);
+      else if (t.dataset.z === 'fit') fitView();
+      else {
+        const r = vStage.getBoundingClientRect();
+        zoomAt(r.width / 2, r.height / 2, t.dataset.z === 'in' ? 1.5 : 1 / 1.5);
+      }
+    });
+    $('.detail-info').addEventListener('click', (e) => {
+      const t = e.target.closest('[data-view], [data-gal]');
+      if (!t || current < 0) return;
+      if (t.dataset.view) openViewer(PROJECTS[current], t.dataset.view);
+      else openViewer(PROJECTS[current], 'images', +t.dataset.gal);
+    });
+    addEventListener('resize', () => { if (vOpen && !vImg.hidden) fitView(); });
+
+    /* ================= Animasyon döngüsü ================= */
+    const heroSection = $('.hero');
+    const dotLinks = [...dots.children];
+    let camY = -(scrollY / (heroSection.offsetHeight || innerHeight)) * viewH;
+    const clock = new THREE.Clock();
+
+    function tick() {
+      requestAnimationFrame(tick);
+      const t = clock.getElapsedTime();
+
+      if (vOpen) return;
+      if (overlayOpen) {
+        if (mq) { mq.controls.update(); mq.r.render(mq.sc, mq.cam); }
+        return;
+      }
+
+      // Sayfa kaydırması ile kamera birebir eşleşir (1 ekran = 1 proje)
+      const unit = heroSection.offsetHeight || innerHeight;
+      const progress = scrollY / unit;
+      camY += (-progress * viewH - camY) * 0.08;
+      mouseSmooth.lerp(mouse, 0.05);
+      camera.position.set(mouseSmooth.x * 0.35, camY + mouseSmooth.y * 0.2, 8);
+      camera.lookAt(0, camY, 0);
+
+      const active = Math.round(progress) - 1;
+      dotLinks.forEach((d, i) => d.classList.toggle('active', i === active));
+      dots.classList.toggle('hide', active < 0 || active >= PROJECTS.length);
+
+      // Hero
+      hero.rotation.y = t * 0.12;
+      heroRock.rotation.x = Math.sin(t * 0.3) * 0.15;
+      heroCore.rotation.set(t * 0.4, t * 0.6, 0);
+      shards.forEach((s) => {
+        const a = s.phase + t * s.speed;
+        s.g.position.set(Math.cos(a) * s.radius, Math.sin(a * 1.3) * 0.6 + s.tilt * Math.sin(a), Math.sin(a) * s.radius * 0.45 - 0.6);
+        s.g.rotation.set(a, a * 0.7, 0);
+      });
+
+      // Taşlar: ekrana yaklaştıkça büyür, döner ve öne gelir
+      stones.forEach((s) => {
+        const d = (s.baseY - camY) / viewH;
+        const ad = Math.min(Math.abs(d), 1.5);
+        s.hover += ((hovered === s ? 1 : 0) - s.hover) * 0.12;
+        s.group.scale.setScalar(s.scale * (1 - ad * 0.28) * (1 + s.hover * 0.08));
+        s.group.position.set(s.baseX * (1 + ad * 0.25), s.baseY + Math.sin(t * 0.6 + s.i) * 0.08, -ad * 1.6);
+        s.group.rotation.set(s.tilt + d * 0.5, t * 0.15 + d * 1.4 + s.i, 0);
+        s.inner.rotation.y = -t * 0.35;
+        s.edgeMat.opacity = s.edgeBase + s.hover * 0.45;
+      });
+
+      renderer.render(scene, camera);
+    }
+    tick();
+    requestAnimationFrame(() => requestAnimationFrame(() => document.body.classList.add('ready')));
+  </script>
+</body>
+</html>
