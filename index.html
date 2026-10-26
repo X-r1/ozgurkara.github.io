@@ -499,6 +499,7 @@
         shards.push({ g, radius: 2.4 + rnd() * 1.6, speed: 0.1 + rnd() * 0.25, phase: rnd() * Math.PI * 2, tilt: (rnd() - 0.5) * 1.2 });
       }
     }
+window.SITE = { THREE, scene, camera, canvas, hero, heroRock, heroCore, coreLight, loadGLB, fitModel };
 
     /* ================= Proje taşları ================= */
     const stones = PROJECTS.map((p, i) => {
@@ -1000,5 +1001,7 @@
     tick();
     requestAnimationFrame(() => requestAnimationFrame(() => document.body.classList.add('ready')));
   </script>
+  <script src="patch-rubik.js" defer></script>
+
 </body>
 </html>
