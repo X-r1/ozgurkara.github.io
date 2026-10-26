@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Özgür Kara — Mimarlık Portfolyosu</title>
+  <title>Özgür Kara — Mimarlık Portfolyosu (küp denemesi)</title>
   <meta name="description" content="Özgür Kara — mimarlık öğrencisi. Projeler, 3D maketler, teknik çizimler ve özgeçmiş.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -499,6 +499,8 @@
         shards.push({ g, radius: 2.4 + rnd() * 1.6, speed: 0.1 + rnd() * 0.25, phase: rnd() * Math.PI * 2, tilt: (rnd() - 0.5) * 1.2 });
       }
     }
+    // Ek dosyalar (patch-*.js) sahneye buradan erişir
+    window.SITE = { THREE, renderer, scene, camera, canvas, hero, heroRock, heroCore, coreLight, loadGLB, fitModel, mulberry32 };
 
     /* ================= Proje taşları ================= */
     const stones = PROJECTS.map((p, i) => {
@@ -535,6 +537,8 @@
       });
       return s;
     });
+
+    window.SITE.stones = stones;
 
     /* ================= Yerleşim ================= */
     let viewH = 1, viewW = 1;
@@ -963,11 +967,15 @@
 
       // Sayfa kaydırması ile kamera birebir eşleşir (1 ekran = 1 proje)
       const unit = heroSection.offsetHeight || innerHeight;
-      const progress = scrollY / unit;
+      // Küp sahnesi (patch-kup.js) giriş ile projeler arasına kaydırma payı ekler; kamera o sürede yerinde kalır
+      const progress = Math.max(0, scrollY - (window.SITE_PIN_PX || 0)) / unit;
+      // patch-kup.js sonsuz döngüde en üste atlarken kamera yumuşak takip etmeden yerine geçsin
+      if (window.SITE_SNAP) { camY = -progress * viewH; window.SITE_SNAP = false; }
       camY += (-progress * viewH - camY) * 0.08;
       mouseSmooth.lerp(mouse, 0.05);
       camera.position.set(mouseSmooth.x * 0.35, camY + mouseSmooth.y * 0.2, 8);
       camera.lookAt(0, camY, 0);
+      if (window.SITE_CAM_FN) window.SITE_CAM_FN(camera, camY);   // patch-kup.js: döngüde yakınlaşma
 
       const active = Math.round(progress) - 1;
       dotLinks.forEach((d, i) => d.classList.toggle('active', i === active));
@@ -1000,5 +1008,6 @@
     tick();
     requestAnimationFrame(() => requestAnimationFrame(() => document.body.classList.add('ready')));
   </script>
+  <script src="patch-kup.js?v=63" defer></script>
 </body>
 </html>
