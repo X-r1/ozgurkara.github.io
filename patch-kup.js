@@ -25,6 +25,7 @@ const CAPTIONS = [
 const css = document.createElement('style');
 css.textContent = `
 .kup-pin { position: relative; height: 640vh; pointer-events: none; }
+@media (max-width: 760px) { .kup-pin { height: 300vh; } }   /* telefonda küp daha az kaydırmayla dağılsın */
 .kup-pin .kup-sticky { position: sticky; top: 0; height: 100vh; }
 .kup-cap { position: absolute; bottom: 11vh; left: 0; right: 0; text-align: center; font-family: var(--mono, monospace);
   font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted, #8a96a3);
@@ -454,17 +455,19 @@ function layerEllipse() {
   return { cx: (x0 + x1) / 2, cy: (y0 + y1) / 2, rx: Math.min(big, (x1 - x0) / 2 * 1.12), ry: Math.min(big, (y1 - y0) / 2 * 1.12) };
 }
 function lightsAt(P, now) {                       // P: CV bölümündeki ilerleme (0 = CV girmeye başladı, 1 = sayfa sonu)
-  const cut = seg(P, 0, 0.2);
-  if (P < 0.4) {                                  // 0.2–0.4: zifiri karanlık
+  // Telefonda CV çok uzun: şalter ve karanlık daha kısa sürer, fener erken yanar
+  const mob = innerWidth < 760, ON = mob ? 0.2 : 0.4;
+  const cut = seg(P, 0, mob ? 0.1 : 0.2);
+  if (P < ON) {                                  // 0.2–0.4: zifiri karanlık
     // Şalter: ışıklar birkaç kez titrer, sonra tamamen söner
     const blinkOff = cut > 0 && cut < 1 && Math.floor(cut * 9) % 3 === 1;
     return { inA: cut >= 1 ? 1 : blinkOff ? 0.93 : cut * cut * 0.7, outA: null };
   }
   // Fener: yanarken birkaç kez teklesin
-  const onK = seg(P, 0.4, 0.46);                  // CV başlığı ekrana girince fener yanar
+  const onK = seg(P, ON, ON + 0.05);               // CV başlığı ekrana girince fener yanar
   const ignite = onK < 1 && Math.floor(onK * 7) % 2 === 1 ? 0.1 : 1;
   const light = ignite * flashFlicker(now) * smooth(seg(onK, 0, 0.3) + 0.0001);
-  const spread = smooth(innerWidth < 760 ? seg(P, 0.42, 0.56) : seg(P, 0.46, 0.82));   // telefonda CV uzun: odak çabuk açılsın
+  const spread = smooth(mob ? seg(P, ON + 0.02, ON + 0.12) : seg(P, 0.46, 0.82));   // telefonda CV uzun: odak çabuk açılsın
   const t0 = cvTitle ? cvTitle.getBoundingClientRect() : { left: innerWidth * 0.2, width: 300, top: innerHeight * 0.4, height: 80 };
   // Odak dağılırken ışık en fazla maket kadar açılır: başlıktan maketin en alt katmanının izdüşümüne doğru büyür
   const M = layerEllipse();
@@ -474,10 +477,11 @@ function lightsAt(P, now) {                       // P: CV bölümündeki ilerle
   // Odak dağılınca yazıları kaplar (en fazla maket genişliği kadar, ekranın ortasında); en sonda katmana oturur
   // Telefonda (dar ekran) ışık ekran genişliğinde açılır: yazılar alt alta, tek sütun
   const narrow = innerWidth < 760;
-  const wMax = narrow ? innerWidth * 0.95 : Math.min(M.rx, innerWidth * 0.62), hMax = innerHeight * (narrow ? 0.45 : 0.55);
+  // Telefonda ışık bütün ekranı kaplar: alttaki yazılar da aynı anda aydınlansın
+  const wMax = narrow ? innerWidth * 1.1 : Math.min(M.rx, innerWidth * 0.62), hMax = innerHeight * (narrow ? 0.85 : 0.55);
   let rx = 100 + (wMax - 100) * spread, ry = 75 + (hMax - 75) * spread;
   let soft = 25 + 45 * spread;                    // odak dağıldıkça kenar yumuşar
-  let outA = 1 - (narrow ? 0.75 : 0.65) * spread;                   // çemberin dışı loş kalır
+  let outA = 1 - (narrow ? 0.85 : 0.65) * spread;                   // çemberin dışı loş kalır
   // En altta ışık dairesi en alt katmanın şekline oturur (kenar keskinleşir, dışı kararır)
   const toLayer = smooth(seg(P, 0.82, 1));       // maketin alt katmanı en sonda, alttaki boşlukta belirir
   if (toLayer > 0) {
@@ -778,24 +782,27 @@ function ensureStoneBox(k) {
 /* ---------- 1. bölüm: sahne sabitken (p: 0..1); arazi yerinde kalır ---------- */
 // Önemli anlarda (küp havada, tam dağılmış, sıra kurulmuş) sayfa tam o noktada bir an durur:
 // kaydırma kısa süre kapanır, sonra kendiliğinden açılır. İki yönde de çalışır.
-const STOPS = [0.12, 0.52, 0.76], STOP_MS = 100;
-let stopUntil = 0, lastP = 0, armed = STOPS.map(() => true);
+// Projelere gelince de (bina tamamlandığında) biraz daha uzun durur.
+const STOPS = [0.12, 0.52, 0.76], STOP_MS = 100, PROJ_STOP_MS = 380;
+function stopPoints() {                           // [piksel, süre]
+  const pinPx = window.SITE_PIN_PX || 1, unit = document.querySelector('.hero').offsetHeight || innerHeight;
+  return STOPS.map((s) => [s * pinPx, STOP_MS]).concat(stones.map((_, k) => [pinPx + (k + 1) * unit, PROJ_STOP_MS]));
+}
+let stopUntil = 0, lastY = 0, armed = {};
 addEventListener('scroll', () => {
-  const pinPx = window.SITE_PIN_PX || 1;
-  const p = scrollY / pinPx;
-  if (performance.now() < stopUntil || loopS) { lastP = p; return; }
-  STOPS.forEach((s, i) => {
-    if (Math.abs(p - s) > 0.04) armed[i] = true;           // uzaklaşınca yeniden kurulsun
+  const y = scrollY;
+  if (performance.now() < stopUntil || loopS) { lastY = y; return; }
+  stopPoints().forEach(([s, ms], i) => {
+    if (Math.abs(y - s) > 40) armed[i] = true;               // uzaklaşınca yeniden kurulsun
     // Yalnızca normal kaydırmada; menü bağlantısı gibi büyük atlamalarda durma
-    if (armed[i] && (lastP - s) * (p - s) <= 0 && lastP !== p && Math.abs(p - lastP) < 0.25) {
+    if (armed[i] !== false && (lastY - s) * (y - s) <= 0 && lastY !== y && Math.abs(y - lastY) < innerHeight * 1.2) {
       armed[i] = false;
-      stopUntil = performance.now() + STOP_MS;
-      window.scrollTo({ top: s * pinPx, behavior: 'instant' });
+      stopUntil = performance.now() + ms;
+      window.scrollTo({ top: s, behavior: 'instant' });
     }
   });
-  lastP = scrollY / pinPx;
-}, { passive: true });
-const stopped = () => performance.now() < stopUntil;
+  lastY = scrollY;
+}, { passive: true });const stopped = () => performance.now() < stopUntil;
 addEventListener('wheel', (e) => { if (stopped()) e.preventDefault(); }, { passive: false });
 addEventListener('touchmove', (e) => { if (stopped()) e.preventDefault(); }, { passive: false });
 addEventListener('keydown', (e) => {
