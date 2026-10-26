@@ -502,7 +502,8 @@ function makeCanvas(z, blur) {
   document.body.appendChild(cv);
   return cv;
 }
-const raysCv = makeCanvas(61, 7), dustCv = makeCanvas(62, 0);
+const LITE = () => innerWidth < 760 || matchMedia('(pointer: coarse)').matches;   // telefon: hafif ışık
+const raysCv = makeCanvas(61, LITE() ? 4 : 7), dustCv = makeCanvas(62, 0);
 const SHAFTS = Array.from({ length: 11 }, () => ({ v: Math.random() * 2 - 1, w: 0.03 + Math.random() * 0.08, ph: Math.random() * 6.28, sp: 0.4 + Math.random() * 1.1 }));
 const motes = [];
 let raysLast = performance.now();
@@ -529,7 +530,7 @@ function drawRays(L, fade) {
   };
 
   // Şaftlar (yarım çözünürlük, CSS ile bulanık)
-  const S = 0.5, g = fitCanvas(raysCv, S);
+  const S = LITE() ? 0.25 : 0.5, g = fitCanvas(raysCv, S);
   g.setTransform(S, 0, 0, S, 0, 0);
   g.clearRect(0, 0, innerWidth, innerHeight);
   g.globalCompositeOperation = 'lighter';
@@ -551,14 +552,14 @@ function drawRays(L, fade) {
   });
 
   // Zerreler: hüzme boyunca kameradan uzaklaşan fotonlar (fener yanarken hızlı akın), sonra süzülen toz
-  const c = fitCanvas(dustCv, Math.min(devicePixelRatio || 1, 2));
+  const c = fitCanvas(dustCv, LITE() ? 1 : Math.min(devicePixelRatio || 1, 2));
   const D = dustCv.width / innerWidth;
   c.setTransform(D, 0, 0, D, 0, 0);
   c.clearRect(0, 0, innerWidth, innerHeight);
   c.globalCompositeOperation = 'lighter';
   const burst = L.on < 1 ? 1 : 0;                 // fener yanma anı: foton akını
   const rate = (burst ? 260 : 45) * L.light;
-  for (let n = rate * dt + Math.random(); n >= 1 && motes.length < 320; n--) {
+  for (let n = rate * dt + Math.random(); n >= 1 && motes.length < (LITE() ? 90 : 320); n--) {
     const fast = burst || Math.random() < 0.15;
     motes.push({ u: fast ? 0.05 : 0.25 + Math.random() * 0.75, v: (Math.random() * 2 - 1) * 0.95, age: 0,
       life: fast ? 0.6 + Math.random() * 0.6 : 2.5 + Math.random() * 3.5, sp: fast ? 0.9 + Math.random() * 0.9 : 0.02 + Math.random() * 0.05,
@@ -590,8 +591,36 @@ function drawRays(L, fade) {
 function setMask(el, img) { el.style.maskImage = el.style.webkitMaskImage = img; }
 // Arka plan (3D) karanlık kalır; yazılar yalnızca fenerin çemberinde görünür (sayfa içeriğine maske).
 // Döngüde sayfa sonunun kopyası (hayalet) maskelenir, sayfa değil.
+// Telefonda hafif çizim: sayfa maskesi ve karışım katmanı yerine yazıların üstünde tek bir karartma katmanı
+// (maske her karede bütün sayfayı yeniden boyatıyor; kaydırırken telefonu kasıyordu)
+// İki düz katman: altta arka planı hep karartan (darkEl), üstte yalnızca yazıları çemberin dışında karartan (warmEl)
+function drawLightsLite(L, fade) {
+  darkEl.style.zIndex = '0';
+  warmEl.style.mixBlendMode = 'normal';
+  warmEl.style.zIndex = '59';
+  setMask(content, ''); if (ghost) setMask(ghost, '');
+  navEl.style.opacity = '';
+  if (!L || fade <= 0.001) { darkEl.style.display = warmEl.style.display = 'none'; return; }
+  darkEl.style.display = warmEl.style.display = '';
+  const c = '3,4,6';
+  if (L.outA === null) {                          // şalter: her şey birlikte kararır
+    darkEl.style.background = `rgba(${c},${(L.inA * fade).toFixed(3)})`;
+    warmEl.style.background = `rgba(${c},${(L.inA * fade).toFixed(3)})`;
+    return;
+  }
+  const e = `ellipse ${L.rx.toFixed(0)}px ${L.ry.toFixed(0)}px at ${L.cx.toFixed(0)}px ${L.cy.toFixed(0)}px`;
+  const bgOut = 0.97 * fade, bgIn = (0.97 + (L.inA - 0.97) * L.toLayer) * fade;
+  darkEl.style.background =
+    `radial-gradient(${e}, rgba(${c},${bgIn.toFixed(3)}) 0%, rgba(${c},${bgIn.toFixed(3)}) ${L.soft.toFixed(0)}%, rgba(${c},${bgOut.toFixed(3)}) 100%)`;
+  warmEl.style.background =
+    `radial-gradient(${e}, rgba(255,214,150,${(0.05 * L.light * fade).toFixed(3)}) 0%, rgba(255,214,150,0) ${L.soft.toFixed(0)}%),` +
+    `radial-gradient(${e}, rgba(${c},${(L.inA * fade).toFixed(3)}) 0%, rgba(${c},${(L.inA * fade).toFixed(3)}) ${L.soft.toFixed(0)}%, rgba(${c},${(L.outA * fade).toFixed(3)}) 100%)`;
+}
 function drawLights(L, fade) {                    // fade: 0..1 (döngüde karartma kalkarken)
   drawRays(L, fade);
+  if (LITE()) { drawLightsLite(L, fade); return; }
+  darkEl.style.zIndex = '0';
+  warmEl.style.mixBlendMode = 'multiply';
   const target = loopS && ghost ? ghost : content;
   const other = target === content ? ghost : content;
   if (other) setMask(other, '');
@@ -799,12 +828,17 @@ addEventListener('scroll', () => {
       armed[i] = false;
       stopUntil = performance.now() + ms;
       window.scrollTo({ top: s, behavior: 'instant' });
+      if (TOUCH) { lockScroll(true); setTimeout(() => { if (!loopS) lockScroll(false); }, ms); }
     }
   });
   lastY = scrollY;
-}, { passive: true });const stopped = () => performance.now() < stopUntil;
+}, { passive: true });
+// Dokunmatikte kaydırmayı engellemek için olay dinlenmez (parmak kaydırması JS'i beklemesin, akıcı kalsın):
+// gerektiğinde sayfanın kayması kısa süre kapatılır.
+const TOUCH = matchMedia('(pointer: coarse)').matches;
+function lockScroll(on) { document.documentElement.style.overflow = document.body.style.overflow = on ? 'hidden' : ''; }
+const stopped = () => performance.now() < stopUntil;
 addEventListener('wheel', (e) => { if (stopped()) e.preventDefault(); }, { passive: false });
-addEventListener('touchmove', (e) => { if (stopped()) e.preventDefault(); }, { passive: false });
 addEventListener('keydown', (e) => {
   if (stopped() && ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', ' ', 'Home', 'End'].includes(e.key)) e.preventDefault();
 });
@@ -972,12 +1006,14 @@ function startLoop(fromEnd) {
   }
   enterTop();
   loopS = fromEnd ? { want: 0, cur: 0 } : { want: TOTAL, cur: TOTAL };
+  if (TOUCH) lockScroll(true);                    // geçiş sürerken parmak sayfayı değil animasyonu sürsün
   fadeGhost(clamp01(loopS.cur / SLIDE));
 }
 function endLoop(toEnd) {
   restoreTop();
   removeGhost();
   loopS = null;
+  lockScroll(false);
   if (toEnd) {
     window.SITE_SNAP = true;
     window.scrollTo({ top: pageEnd(), behavior: 'instant' });
@@ -1024,8 +1060,8 @@ addEventListener('touchmove', (e) => {
   if (touchY === null) return;
   const y = e.touches[0].clientY, px = (touchY - y) * 2;
   touchY = y;
-  if (px && drive(px)) e.preventDefault();
-}, { passive: false });
+  if (px) drive(px);
+}, { passive: true });
 addEventListener('keydown', (e) => {
   const step = { ArrowDown: 120, ArrowUp: -120, PageDown: innerHeight * 0.8, PageUp: -innerHeight * 0.8,
     ' ': innerHeight * 0.8, End: 400, Home: -400 }[e.key];
