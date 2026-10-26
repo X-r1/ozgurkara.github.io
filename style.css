@@ -305,6 +305,17 @@ footer { display: flex; justify-content: space-between; margin-top: 90px; font-f
   .model-ui { bottom: 14px; }
   .model-ui input[type=range] { width: 70px; }
 
+  /* Görüntüleyici ekrana sığsın: uzun sekme/çizim listeleri kendi içinde kaysın, kapatma düğmesi hep görünsün */
+  .viewer { grid-template-columns: minmax(0, 1fr); }
+  .v-top, .v-body, .v-tools { min-width: 0; }
+  .v-head { flex: 1; overflow: hidden; }
+  .v-list { min-width: 0; }
+  .v-tools { flex-wrap: wrap; padding: 10px 16px; gap: 8px; }
+  .v-caption { flex-basis: 100%; }
+  .v-buttons { flex-wrap: wrap; flex: 1 1 auto; }
+  /* Maket düğme şeridi: dar ekranda iki satıra iner */
+  .model-ui { flex-wrap: wrap; justify-content: center; white-space: normal; width: calc(100% - 24px); border-radius: 18px; gap: 2px; }
+  .model-ui button, .model-ui label { padding: 8px 11px; }
   .v-top { padding: 12px 16px; }
   .v-head { gap: 12px; }
   .v-proj, .v-close span { display: none; }

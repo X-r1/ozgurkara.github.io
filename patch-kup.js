@@ -464,7 +464,7 @@ function lightsAt(P, now) {                       // P: CV bölümündeki ilerle
   const onK = seg(P, 0.4, 0.46);                  // CV başlığı ekrana girince fener yanar
   const ignite = onK < 1 && Math.floor(onK * 7) % 2 === 1 ? 0.1 : 1;
   const light = ignite * flashFlicker(now) * smooth(seg(onK, 0, 0.3) + 0.0001);
-  const spread = smooth(seg(P, 0.46, 0.82));
+  const spread = smooth(innerWidth < 760 ? seg(P, 0.42, 0.56) : seg(P, 0.46, 0.82));   // telefonda CV uzun: odak çabuk açılsın
   const t0 = cvTitle ? cvTitle.getBoundingClientRect() : { left: innerWidth * 0.2, width: 300, top: innerHeight * 0.4, height: 80 };
   // Odak dağılırken ışık en fazla maket kadar açılır: başlıktan maketin en alt katmanının izdüşümüne doğru büyür
   const M = layerEllipse();
@@ -472,9 +472,12 @@ function lightsAt(P, now) {                       // P: CV bölümündeki ilerle
   cx += (M.cx - cx) * spread;
   cy += (innerHeight * 0.5 - cy) * spread;
   // Odak dağılınca yazıları kaplar (en fazla maket genişliği kadar, ekranın ortasında); en sonda katmana oturur
-  let rx = 100 + (Math.min(M.rx, innerWidth * 0.62) - 100) * spread, ry = 75 + (innerHeight * 0.55 - 75) * spread;
+  // Telefonda (dar ekran) ışık ekran genişliğinde açılır: yazılar alt alta, tek sütun
+  const narrow = innerWidth < 760;
+  const wMax = narrow ? innerWidth * 0.95 : Math.min(M.rx, innerWidth * 0.62), hMax = innerHeight * (narrow ? 0.45 : 0.55);
+  let rx = 100 + (wMax - 100) * spread, ry = 75 + (hMax - 75) * spread;
   let soft = 25 + 45 * spread;                    // odak dağıldıkça kenar yumuşar
-  let outA = 1 - 0.65 * spread;                   // çemberin dışı loş kalır
+  let outA = 1 - (narrow ? 0.75 : 0.65) * spread;                   // çemberin dışı loş kalır
   // En altta ışık dairesi en alt katmanın şekline oturur (kenar keskinleşir, dışı kararır)
   const toLayer = smooth(seg(P, 0.82, 1));       // maketin alt katmanı en sonda, alttaki boşlukta belirir
   if (toLayer > 0) {
