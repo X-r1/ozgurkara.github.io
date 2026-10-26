@@ -499,8 +499,12 @@
         shards.push({ g, radius: 2.4 + rnd() * 1.6, speed: 0.1 + rnd() * 0.25, phase: rnd() * Math.PI * 2, tilt: (rnd() - 0.5) * 1.2 });
       }
     }
+<<<<<<< HEAD:index-kup.html
     // Ek dosyalar (patch-*.js) sahneye buradan erişir
     window.SITE = { THREE, renderer, scene, camera, canvas, hero, heroRock, heroCore, coreLight, loadGLB, fitModel, mulberry32 };
+=======
+window.SITE = { THREE, scene, camera, canvas, hero, heroRock, heroCore, coreLight, loadGLB, fitModel };
+>>>>>>> ffdc7b118bf630a2e0fdcab19c5a2a4a750e3850:index.html
 
     /* ================= Proje taşları ================= */
     const stones = PROJECTS.map((p, i) => {
@@ -1008,6 +1012,10 @@
     tick();
     requestAnimationFrame(() => requestAnimationFrame(() => document.body.classList.add('ready')));
   </script>
+<<<<<<< HEAD:index-kup.html
   <script src="patch-kup.js?v=63" defer></script>
+=======
+
+>>>>>>> ffdc7b118bf630a2e0fdcab19c5a2a4a750e3850:index.html
 </body>
 </html>
