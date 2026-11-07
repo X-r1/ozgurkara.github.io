@@ -23,6 +23,7 @@ const OD = 'drawings/oblique/';
 const OI = 'images/oblique/';
 const MD = 'drawings/mts5/';
 const MI = 'images/mts5/';
+const LD = 'drawings/longevity/';
 
 window.PORTFOLIO = {
   projects: [
@@ -61,11 +62,15 @@ window.PORTFOLIO = {
       images: [
         PI + '01_kus_bakisi.jpg', PI + '02_sokak_cephesi.jpg', PI + '03_ana_giris.jpg', PI + '04_bahce_cephesi.jpg',
         PI + '05_engawa.jpg', PI + '06_ofis_ic_mekan.jpg', PI + '07_maket_atolyesi.jpg', PI + '08_odul_salonu_sergi.jpg',
-        PI + '09_gece_ana_giris.jpg', PI + '10_gece_sokak_cephesi.jpg', PI + '11_gece_arka_bahce_cephesi.jpg', PI + '12_gece_bakilan_aci.jpg'
+        PI + '09_gece_ana_giris.jpg', PI + '10_gece_sokak_cephesi.jpg', PI + '11_gece_arka_bahce_cephesi.jpg', PI + '12_gece_bakilan_aci.jpg',
+        PI + '21_resepsiyon.jpg', PI + '23_ofis_ici.jpg', PI + '13_toplanti_odasi_1.jpg', PI + '14_toplanti_odasi_2.jpg',
+        PI + '17_yonetici_odasi.jpg', PI + '15_koridor_maket_galerisi.jpg', PI + '22_maket_koridoru.jpg', PI + '16_maket_atolyesi.jpg',
+        PI + '19_malzeme_kutuphanesi.jpg', PI + '18_oturma_mutfak.jpg', PI + '24_balkon.jpg', PI + '20_yan_bahce_merdiveni.jpg',
+        PI + '25_japon_bahcesi.jpg'
       ],
       drawings: {
         plans: [
-          { title: 'Vaziyet Planı', src: PO + 'pafta-01.jpg', note: '1/250 · Pafta 01', en: { title: 'Site Plan', note: '1/250 · Sheet 01' } },
+          { title: 'Vaziyet Planı', src: PO + 'pafta-01.jpg', note: '1/250 · 1/5000 · Pafta 01', en: { title: 'Site Plan', note: '1/250 · 1/5000 · Sheet 01' } },
           { title: 'Zemin Kat Planı', src: PO + 'pafta-02.jpg', note: '1/50 · Pafta 02', en: { title: 'Ground Floor Plan', note: '1/50 · Sheet 02' } },
           { title: '1. Kat Planı', src: PO + 'pafta-03.jpg', note: '1/50 · Pafta 03', en: { title: 'First Floor Plan', note: '1/50 · Sheet 03' } },
           { title: '2. Kat Planı', src: PO + 'pafta-04.jpg', note: '1/50 · Pafta 04', en: { title: 'Second Floor Plan', note: '1/50 · Sheet 04' } }
@@ -75,18 +80,70 @@ window.PORTFOLIO = {
           { title: 'Kesit B-B', src: PO + 'pafta-06.jpg', note: '1/50 · Pafta 06', en: { title: 'Section B-B', note: '1/50 · Sheet 06' } }
         ],
         elevations: [
-          { title: 'Kuzey Cephesi', src: PO + 'kuzey_cephesi.svg', en: { title: 'North Elevation' } },
-          { title: 'Güney Cephesi', src: PO + 'guney_cephesi.svg', en: { title: 'South Elevation' } },
-          { title: 'Doğu Cephesi', src: PO + 'dogu_cephesi.svg', en: { title: 'East Elevation' } },
-          { title: 'Batı Cephesi', src: PO + 'bati_cephesi.svg', en: { title: 'West Elevation' } }
+          { title: 'Güney Cephesi', src: PO + 'pafta-07.jpg', note: '1/50 · Pafta 07', en: { title: 'South Elevation', note: '1/50 · Sheet 07' } },
+          { title: 'Kuzey Cephesi', src: PO + 'pafta-08.jpg', note: '1/50 · Pafta 08', en: { title: 'North Elevation', note: '1/50 · Sheet 08' } },
+          { title: 'Doğu Cephesi', src: PO + 'pafta-09.jpg', note: '1/50 · Pafta 09', en: { title: 'East Elevation', note: '1/50 · Sheet 09' } },
+          { title: 'Batı Cephesi', src: PO + 'pafta-10.jpg', note: '1/50 · Pafta 10', en: { title: 'West Elevation', note: '1/50 · Sheet 10' } }
         ],
         details: [
-          { title: 'Sistem Detayları D1–D4', src: PO + 'pafta-07.jpg', note: '1/10 · 1/5 · Pafta 07', en: { title: 'System Details D1–D4', note: '1/10 · 1/5 · Sheet 07' } },
-          { title: 'Çatı Detayları D5–D6', src: PO + 'pafta-08.jpg', note: '1/20 · 1/100 · Pafta 08', en: { title: 'Roof Details D5–D6', note: '1/20 · 1/100 · Sheet 08' } },
-          { title: 'D7 Saçak Detayı', src: PO + 'd7-01.jpg', en: { title: 'D7 Eave Detail' } }
+          { title: 'Sistem Detayları D1–D4', src: PO + 'detay-01.jpg', note: '1/10 · 1/5', en: { title: 'System Details D1–D4', note: '1/10 · 1/5' } },
+          { title: 'Çatı Detayları D5–D6', src: PO + 'detay-02.jpg', note: '1/20 · 1/100', en: { title: 'Roof Details D5–D6', note: '1/20 · 1/100' } },
+          { title: 'D7 Saçak Detayı', src: PO + 'd7-01.jpg', en: { title: 'D7 Eave Detail' } },
+          { title: 'Dış Mekân Görselleri', src: PO + 'pafta-11.jpg', note: 'Pafta 11', en: { title: 'Exterior Views', note: 'Sheet 11' } },
+          { title: 'İç Mekân Görselleri', src: PO + 'pafta-12.jpg', note: 'Pafta 12', en: { title: 'Interior Views', note: 'Sheet 12' } }
         ]
       },
       drawingsPdf: PO + 'PrimeOfis_Mimari_Proje.pdf'
+    },
+    {
+      id: 'longevity',
+      title: 'Longevity Yaşam Merkezi',
+      type: 'Sağlıklı Yaşam Kampüsü',
+      year: '2026',
+      location: 'Kumbağ, Süleymanpaşa · Tekirdağ',
+      area: '~34.610 m² proje alanı · ~4.845 m² yapı taban alanı',
+      status: 'Mimari Tasarım VII · Vaziyet Projesi',
+      role: 'Bireysel Proje',
+      description: [
+        'Kumbağ\'da Marmara kıyısında, yol ile kumsal arasındaki eğimli bir arazide tasarladığım sağlıklı yaşam merkezi. Kurgu, ziyaretçinin izlediği bir rotaya dayanıyor: ölç, öğren, uygula, dinlen, doğayla temas et ve yeniden değerlendir.',
+        'Program tek bir büyük bina yerine Japon köşk mantığıyla parçalara ayrıldı: ana köşk ve yedi konaklama binasından oluşan konaklama köyü, Karşılama Köşkü, çay evi, Sofra Evi, Öğrenme ve Toplum Evi, Şifa Evi ve deniz kompleksi. Yapılar kırma çatılı, engawalı ve 9,50 m yükseklik sınırının altında kalıyor.',
+        'Arazi İnönü Caddesi\'ndeki mon kapısından başlayıp arasta yolu ve Çınar Meydanı üzerinden denize iniyor. Kesme taş ana aks, 768 m\'lik çakıl yürüyüş halkası, 55 m\'lik iskele, üç duraklı elektrikli servis hattı ve yaklaşık 130 araçlık bodrum otopark yerleşimi birbirine bağlıyor.'
+      ],
+      tags: ['Sağlıklı yaşam', 'Kampüs yerleşimi', 'Japon köşk mimarisi', 'Kıyı peyzajı', 'Eğimli arazi'],
+      en: {
+        title: 'Longevity Living Center',
+        type: 'Healthy Living Campus',
+        location: 'Kumbağ, Süleymanpaşa · Tekirdağ',
+        area: '~34,610 m² site · ~4,845 m² building footprint',
+        status: 'Architectural Design VII · Site Planning Project',
+        role: 'Individual Project',
+        description: [
+          'A healthy living center on a sloping site between the road and the beach on the Marmara coast in Kumbağ. The scheme follows the route a visitor takes: measure, learn, practise, rest, connect with nature and re-evaluate.',
+          'Instead of one large building, the program is split into pavilions in the manner of Japanese kiosks: a lodging village of a main pavilion and seven guest houses, a Welcome Pavilion, a tea house, a Dining House, a Learning and Community House, a Healing House and a sea complex. The buildings have hipped roofs and engawa verandas and stay below the 9.50 m height limit.',
+          'The site starts at the mon gate on İnönü Street and descends to the sea via a market street and the Plane Tree Square. A cut-stone main axis, a 768 m gravel walking loop, a 55 m pier, an electric shuttle line with three stops and a basement car park for about 130 cars tie the layout together.'
+        ],
+        tags: ['Healthy living', 'Campus layout', 'Japanese pavilion architecture', 'Coastal landscape', 'Sloped site']
+      },
+      model: null,              // 3D model henüz yok: taşta örnek maket gösterilir
+      generator: 'pavilion',
+      images: [],
+      drawings: {
+        plans: [
+          { title: 'Vaziyet Planı: Ulaşım ve Yakın Çevre', src: LD + 'pafta-01.jpg', note: '1/1000 · Pafta V-01', en: { title: 'Site Plan: Access and Surroundings', note: '1/1000 · Sheet V-01' } },
+          { title: 'Vaziyet Planı: Yerleşim ve Siluetler', src: LD + 'pafta-02.jpg', note: '1/500 · Pafta V-02', en: { title: 'Site Plan: Layout and Silhouettes', note: '1/500 · Sheet V-02' } }
+        ],
+        sections: [
+          { title: 'Arazi Kesitleri A-A, D-D', src: LD + 'pafta-03.jpg', note: '1/100 · Pafta K-01', en: { title: 'Site Sections A-A, D-D', note: '1/100 · Sheet K-01' } },
+          { title: 'Arazi Kesiti B-B', src: LD + 'pafta-04.jpg', note: '1/100 · Pafta K-02', en: { title: 'Site Section B-B', note: '1/100 · Sheet K-02' } },
+          { title: 'Arazi Kesiti C-C', src: LD + 'pafta-05.jpg', note: '1/100 · Pafta K-03', en: { title: 'Site Section C-C', note: '1/100 · Sheet K-03' } }
+        ],
+        elevations: [
+          { title: 'Doğu Silueti (Denizden)', src: LD + 'pafta-06.jpg', note: '1/100 · Pafta S-01', en: { title: 'East Silhouette (from the Sea)', note: '1/100 · Sheet S-01' } },
+          { title: 'Batı Silueti (İnönü Cd.)', src: LD + 'pafta-07.jpg', note: '1/100 · Pafta S-02', en: { title: 'West Silhouette (İnönü St.)', note: '1/100 · Sheet S-02' } }
+        ],
+        details: []
+      },
+      drawingsPdf: LD + 'Longevity_Vaziyet_Paftalari.pdf'
     },
     {
       id: 'modulus',

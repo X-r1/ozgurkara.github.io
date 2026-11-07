@@ -10,13 +10,14 @@ Tekirdağ Namık Kemal Üniversitesi Mimarlık Bölümü 4. sınıf öğrencisi 
 Sayfa açılınca kartondan bir arazi maketi katman katman yükseliyor, ağaçlar dikiliyor ve tepesine bir Rubik küpü iniyor. Küp kendi kendine yavaşça dönüp katmanlarını çeviriyor; üstüne tıklayınca hızlanıyor.
 
 **Aşağı kaydırınca**
-Küp havaya kalkıp 27 parçasına dağılıyor. Parçaların üçü sıraya giriyor ve her biri, projelere inildikçe bir binanın kütle modeline dönüşüyor: *her parça bir proje*.
+Küp havaya kalkıp 27 parçasına dağılıyor. Parçaların dördü sıraya giriyor ve her biri, projelere inildikçe bir binanın kütle modeline dönüşüyor: *her parça bir proje*.
 
 **Projeler**
 
 | Proje | Ne | Yıl |
 |---|---|---|
 | Prime Ofis | 3 katlı mimarlık ofisi, Tekirdağ | 2026 |
+| Longevity Yaşam Merkezi | Sağlıklı yaşam kampüsü, Kumbağ / Tekirdağ (vaziyet projesi; 3D model henüz yok) | 2026 |
 | Modulus | Çok katlı ofis binası (grup projesi: Zeynep Aybüke Kurt, Melike Salman, Özgür Kara) | 2025 |
 | Oblique Mağaza | Ticari yapı, giyim mağazası | 2026 |
 
