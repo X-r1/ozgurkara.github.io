@@ -24,6 +24,7 @@ const OI = 'images/oblique/';
 const MD = 'drawings/mts5/';
 const MI = 'images/mts5/';
 const LD = 'drawings/longevity/';
+const LI = 'images/longevity/';
 
 window.PORTFOLIO = {
   projects: [
@@ -101,49 +102,77 @@ window.PORTFOLIO = {
       type: 'Sağlıklı Yaşam Kampüsü',
       year: '2026',
       location: 'Kumbağ, Süleymanpaşa · Tekirdağ',
-      area: '~34.610 m² proje alanı · ~4.845 m² yapı taban alanı',
-      status: 'Mimari Tasarım VII · Vaziyet Projesi',
+      area: '~34.610 m² proje alanı · ~4.181 m² yapı taban alanı · 23 yapı',
+      status: 'Mimari Tasarım VII · Vize 2. Teslim',
       role: 'Bireysel Proje',
       description: [
         'Kumbağ\'da Marmara kıyısında, yol ile kumsal arasındaki eğimli bir arazide tasarladığım sağlıklı yaşam merkezi. Kurgu, ziyaretçinin izlediği bir rotaya dayanıyor: ölç, öğren, uygula, dinlen, doğayla temas et ve yeniden değerlendir.',
-        'Program tek bir büyük bina yerine Japon köşk mantığıyla parçalara ayrıldı: ana köşk ve yedi konaklama binasından oluşan konaklama köyü, Karşılama Köşkü, çay evi, Sofra Evi, Öğrenme ve Toplum Evi, Şifa Evi ve deniz kompleksi. Yapılar kırma çatılı, engawalı ve 9,50 m yükseklik sınırının altında kalıyor.',
-        'Arazi İnönü Caddesi\'ndeki mon kapısından başlayıp arasta yolu ve Çınar Meydanı üzerinden denize iniyor. Kesme taş ana aks, 768 m\'lik çakıl yürüyüş halkası, 55 m\'lik iskele, üç duraklı elektrikli servis hattı ve yaklaşık 130 araçlık bodrum otopark yerleşimi birbirine bağlıyor.'
+        'Program tek bir büyük bina yerine Japon köşk mantığıyla parçalara ayrıldı: Ryokan ana köşkü ve üç konaklama binasından oluşan 35 odalı konaklama köyü, Karşılama Köşkü, kafe, Sofra Evi, Öğrenme ve Toplum Evi, Şifa Evi, saunalı deniz kompleksi ve dört deniz bungalovu. Yapılar kırma çatılı, engawalı, en fazla iki katlı ve 9,50 m yükseklik sınırının altında.',
+        'Arazi İnönü Caddesi\'ndeki mon kapısından başlayıp arasta yolu ve Çınar Meydanı üzerinden denize iniyor. Bahçeler, yürüyüş halkası, iskeleler ve konaklamanın altındaki yaklaşık 155 araçlık bodrum otopark yerleşimi birbirine bağlıyor. Proje vaziyet planları, kot ve acil çıkış planı, kat planları, kesit ve görünüşler, siluetler ve 1/1000 oluklu mukavva arazi maketiyle anlatılıyor.'
       ],
-      tags: ['Sağlıklı yaşam', 'Kampüs yerleşimi', 'Japon köşk mimarisi', 'Kıyı peyzajı', 'Eğimli arazi'],
+      tags: ['Sağlıklı yaşam', 'Kampüs yerleşimi', 'Japon köşk mimarisi', 'Kıyı peyzajı', 'Eğimli arazi', 'Arazi maketi'],
       en: {
         title: 'Longevity Living Center',
         type: 'Healthy Living Campus',
         location: 'Kumbağ, Süleymanpaşa · Tekirdağ',
-        area: '~34,610 m² site · ~4,845 m² building footprint',
-        status: 'Architectural Design VII · Site Planning Project',
+        area: '~34,610 m² site · ~4,181 m² building footprint · 23 buildings',
+        status: 'Architectural Design VII · Midterm Submission 2',
         role: 'Individual Project',
         description: [
           'A healthy living center on a sloping site between the road and the beach on the Marmara coast in Kumbağ. The scheme follows the route a visitor takes: measure, learn, practise, rest, connect with nature and re-evaluate.',
-          'Instead of one large building, the program is split into pavilions in the manner of Japanese kiosks: a lodging village of a main pavilion and seven guest houses, a Welcome Pavilion, a tea house, a Dining House, a Learning and Community House, a Healing House and a sea complex. The buildings have hipped roofs and engawa verandas and stay below the 9.50 m height limit.',
-          'The site starts at the mon gate on İnönü Street and descends to the sea via a market street and the Plane Tree Square. A cut-stone main axis, a 768 m gravel walking loop, a 55 m pier, an electric shuttle line with three stops and a basement car park for about 130 cars tie the layout together.'
+          'Instead of one large building, the program is split into pavilions in the manner of Japanese kiosks: a 35-room lodging village of a ryokan main pavilion and three guest houses, a Welcome Pavilion, a café, a Dining House, a Learning and Community House, a Healing House, a sea complex with saunas and four sea bungalows. The buildings have hipped roofs and engawa verandas, are at most two storeys and stay below the 9.50 m height limit.',
+          'The site starts at the mon gate on İnönü Street and descends to the sea via a market street and the Plane Tree Square. Gardens, a walking loop, piers and a basement car park for about 155 cars under the lodging tie the layout together. The project is presented with site plans, a level and emergency exit plan, floor plans, sections and elevations, silhouettes and a 1/1000 corrugated cardboard site model.'
         ],
-        tags: ['Healthy living', 'Campus layout', 'Japanese pavilion architecture', 'Coastal landscape', 'Sloped site']
+        tags: ['Healthy living', 'Campus layout', 'Japanese pavilion architecture', 'Coastal landscape', 'Sloped site', 'Site model']
       },
       model: null,              // 3D model henüz yok: taşta örnek maket gösterilir
       generator: 'pavilion',
-      images: [],
+      images: [
+        'kam_01_kus_bakisi', 'kam_c1_konaklama_cephe', 'kam_c2_sofra_evi_cephe', 'kam_c3_deniz_kompleksi', 'kam_02_mon_kapisi',
+        'kam_03_mon_arkadan_meydan', 'kam_04_cinar_meydani', 'kam_05_meydan_kus', 'kam_06_asma_gecidi', 'kam_07_koi_havuzu',
+        'kam_07b_bonsai_bahcesi', 'kam_08_aycicegi_labirenti', 'kam_09_harman_tarla', 'kam_10_sonbahar_bahcesi', 'kam_11_sonbahar_ortasi',
+        'maket_1_genel', 'maket_2_cadde', 'maket_3_meydan', 'maket_4_deniz'
+      ].map((ad) => LI + ad + '.jpg').concat([LD + 'k00-konsept.jpg', LD + 'analizler.jpg', LD + 'm01-maket.jpg']),
       drawings: {
         plans: [
-          { title: 'Vaziyet Planı: Ulaşım ve Yakın Çevre', src: LD + 'pafta-01.jpg', note: '1/1000 · Pafta V-01', en: { title: 'Site Plan: Access and Surroundings', note: '1/1000 · Sheet V-01' } },
-          { title: 'Vaziyet Planı: Yerleşim ve Siluetler', src: LD + 'pafta-02.jpg', note: '1/500 · Pafta V-02', en: { title: 'Site Plan: Layout and Silhouettes', note: '1/500 · Sheet V-02' } }
-        ],
+          { title: 'Vaziyet Planı: Ulaşım ve Yakın Çevre', src: LD + 'v01.jpg', note: '1/1000 · Pafta V-01', en: { title: 'Site Plan: Access and Surroundings', note: '1/1000 · Sheet V-01' } },
+          { title: 'Vaziyet Planı: Yerleşim ve Siluetler', src: LD + 'v02.jpg', note: '1/500 · Pafta V-02', en: { title: 'Site Plan: Layout and Silhouettes', note: '1/500 · Sheet V-02' } },
+          { title: 'Kot Planı: Zemin Katlar ve Acil Çıkışlar', src: LD + 'v06-kot.jpg', note: '1/500 · Pafta V-06', en: { title: 'Level Plan: Ground Floors and Emergency Exits', note: '1/500 · Sheet V-06' } }
+        ].concat([            // Pafta 05: her yapi icin kat plani, kesit ve gorunusler (sira = PDF sayfa sirasi)
+          ['1.1 Konaklama Binası K1 (K2, K3 aynı plan)', '1.1 Guest House K1 (K2, K3 same plan)'],
+          ['1.0 Ryokan Ana Köşk', '1.0 Ryokan Main Pavilion'],
+          ['2 Karşılama Köşkü', '2 Welcome Pavilion'],
+          ['3 Kafe (Chaya)', '3 Café (Chaya)'],
+          ['4 Sofra Evi', '4 Dining House'],
+          ['11.1 Deniz Kompleksi: Soyunma ve Duş', '11.1 Sea Complex: Changing and Showers'],
+          ['11.2 Deniz Kompleksi: Fin Saunası', '11.2 Sea Complex: Finnish Sauna'],
+          ['11.3 Deniz Kompleksi: Ilık Sauna', '11.3 Sea Complex: Warm Sauna'],
+          ['11.4 Deniz Kompleksi: Dinlenme Köşkü', '11.4 Sea Complex: Rest Pavilion'],
+          ['11.5 Deniz Kompleksi: Çay ve Seyir', '11.5 Sea Complex: Tea and Viewing Pavilion'],
+          ['12.1 Deniz Bungalovu (4 adet aynı plan)', '12.1 Sea Bungalow (4 of the same plan)'],
+          ['5 Öğrenme ve Toplum Evi', '5 Learning and Community House'],
+          ['5A Ortak Derslik, Atölye ve Dojo', '5A Classroom, Workshop and Dojo'],
+          ['6 Şifa Evi: Sağlık Birimi', '6 Healing House: Health Unit'],
+          ['7 Arasta Kolonadı', '7 Market Colonnade (Arasta)'],
+          ['8 Mon Kapısı', '8 Mon Gate'],
+          ['D1 Durak Köşkü (D1, D3 aynı)', 'D1 Shuttle Stop Pavilion (D1, D3 same)']
+        ].map(([tr, en], i) => {
+          const n = String(i + 1).padStart(2, '0');
+          return { title: tr, src: LD + '05-' + n + '.jpg', note: '1/200 · Pafta 05-' + n + ' · plan, kesit, görünüş',
+                   en: { title: en, note: '1/200 · Sheet 05-' + n + ' · plan, section, elevations' } };
+        })),
         sections: [
-          { title: 'Arazi Kesitleri A-A, D-D', src: LD + 'pafta-03.jpg', note: '1/100 · Pafta K-01', en: { title: 'Site Sections A-A, D-D', note: '1/100 · Sheet K-01' } },
-          { title: 'Arazi Kesiti B-B', src: LD + 'pafta-04.jpg', note: '1/100 · Pafta K-02', en: { title: 'Site Section B-B', note: '1/100 · Sheet K-02' } },
-          { title: 'Arazi Kesiti C-C', src: LD + 'pafta-05.jpg', note: '1/100 · Pafta K-03', en: { title: 'Site Section C-C', note: '1/100 · Sheet K-03' } }
+          { title: 'Arazi Kesitleri A-A, D-D', src: LD + '03-1.jpg', note: '1/100 · Pafta 03', en: { title: 'Site Sections A-A, D-D', note: '1/100 · Sheet 03' } },
+          { title: 'Arazi Kesiti B-B', src: LD + '03-2.jpg', note: '1/100 · Pafta 03', en: { title: 'Site Section B-B', note: '1/100 · Sheet 03' } },
+          { title: 'Arazi Kesiti C-C', src: LD + '03-3.jpg', note: '1/100 · Pafta 03', en: { title: 'Site Section C-C', note: '1/100 · Sheet 03' } }
         ],
         elevations: [
-          { title: 'Doğu Silueti (Denizden)', src: LD + 'pafta-06.jpg', note: '1/100 · Pafta S-01', en: { title: 'East Silhouette (from the Sea)', note: '1/100 · Sheet S-01' } },
-          { title: 'Batı Silueti (İnönü Cd.)', src: LD + 'pafta-07.jpg', note: '1/100 · Pafta S-02', en: { title: 'West Silhouette (İnönü St.)', note: '1/100 · Sheet S-02' } }
+          { title: 'Doğu Silueti (Denizden)', src: LD + '04-1.jpg', note: '1/100 · Pafta 04', en: { title: 'East Silhouette (from the Sea)', note: '1/100 · Sheet 04' } },
+          { title: 'Batı Silueti (İnönü Cd.)', src: LD + '04-2.jpg', note: '1/100 · Pafta 04', en: { title: 'West Silhouette (İnönü St.)', note: '1/100 · Sheet 04' } }
         ],
         details: []
       },
-      drawingsPdf: LD + 'Longevity_Vaziyet_Paftalari.pdf'
+      drawingsPdf: LD + 'Longevity_Kumbag_Paftalar.pdf'
     },
     {
       id: 'modulus',

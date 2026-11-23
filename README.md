@@ -17,7 +17,7 @@ Küp havaya kalkıp 27 parçasına dağılıyor. Parçaların dördü sıraya gi
 | Proje | Ne | Yıl |
 |---|---|---|
 | Prime Ofis | 3 katlı mimarlık ofisi, Tekirdağ | 2026 |
-| Longevity Yaşam Merkezi | Sağlıklı yaşam kampüsü, Kumbağ / Tekirdağ (vaziyet projesi; 3D model henüz yok) | 2026 |
+| Longevity Yaşam Merkezi | Sağlıklı yaşam kampüsü, Kumbağ / Tekirdağ (vaziyet, kot planı, kat planları, kesit-siluet, render ve arazi maketi; 3D model henüz yok) | 2026 |
 | Modulus | Çok katlı ofis binası (grup projesi: Zeynep Aybüke Kurt, Melike Salman, Özgür Kara) | 2025 |
 | Oblique Mağaza | Ticari yapı, giyim mağazası | 2026 |
 
