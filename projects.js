@@ -125,8 +125,9 @@ window.PORTFOLIO = {
         ],
         tags: ['Healthy living', 'Campus layout', 'Japanese pavilion architecture', 'Coastal landscape', 'Sloped site', 'Site model']
       },
-      model: null,              // 3D model henüz yok: taşta örnek maket gösterilir
-      generator: 'pavilion',
+      model: 'models/longevity.glb',
+      stoneModel: 'models/longevity-tas.glb',   // ana sayfadaki taş için hafif sürüm (arazi + binalar)
+      schematic: 'models/longevity-sema.glb',   // ana sayfada taş yerine dönen şema (yalnız binalar)
       images: [
         'kam_01_kus_bakisi', 'kam_c1_konaklama_cephe', 'kam_c2_sofra_evi_cephe', 'kam_c3_deniz_kompleksi', 'kam_02_mon_kapisi',
         'kam_03_mon_arkadan_meydan', 'kam_04_cinar_meydani', 'kam_05_meydan_kus', 'kam_06_asma_gecidi', 'kam_07_koi_havuzu',
